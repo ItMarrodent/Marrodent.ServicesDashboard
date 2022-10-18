@@ -26,8 +26,7 @@ public abstract class ServiceApp : IIdentity
     //Private - functions
     private ICollection<string> GetLogsBase(DateTime date, string path)
     {
-        return Directory
-            .GetFiles(path)
+        return Directory.GetFiles(path)
             .Select(x => new FileInfo(x))
             .Where(x => x.CreationTime >= date)
             .SelectMany(x => File.ReadAllLines(x.FullName))
