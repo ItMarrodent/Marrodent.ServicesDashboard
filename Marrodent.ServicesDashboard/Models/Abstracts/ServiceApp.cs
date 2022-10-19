@@ -9,15 +9,21 @@ public abstract class ServiceApp : IIdentity
     public int Id { get; set; }
     
     //Public - string
-    public string Name { get; set; }
-    public string TerminalAddress { get; set; }
-    public string CorrectLogAddress { get; set; }
-    public string ErrorLogAddress { get; set; }
+    public string? Name { get; set; }
+    public string? TerminalAddress { get; set; }
+    public string? CorrectLogAddress { get; set; }
+    public string? ErrorLogAddress { get; set; }
 
     //Public - enum
-    public ServiceType Type { get; set; }
+    public readonly ServiceType Type;
     public ServiceState State { get; set; }
     
+    //CTOR
+    protected ServiceApp(ServiceType type)
+    {
+        Type = type;
+    }
+
     //Public - functions
     public virtual ServiceState GetState => ServiceState.Unknown;
     public virtual ICollection<string> GetCorrectLogs(DateTime date) => GetLogsBase(date, CorrectLogAddress);
