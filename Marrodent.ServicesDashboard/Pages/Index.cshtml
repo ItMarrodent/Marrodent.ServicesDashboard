@@ -8,15 +8,15 @@
                 IIS services
             </p>
             <div>
-                @for (int x = 0; x < 10; x++)
+                @foreach (var app in Model.IISApps)
                 {
                     <div class="card" style="background-color: #fafafa">
                         <div class="card-body">
-                            <h5 class="card-title">App name</h5>
+                            <h5 class="card-title">@app.Name</h5>
                             <br/>
-                            <p class="card-text"><b>Description:</b> app description will be there</p>
-                            <p class="card-text"><b>Terminal:</b>10.48.86.234</p>
-                            <p class="card-text"><b>State:</b> Running</p>
+                            <p class="card-text"><b>Description:</b> @app.Description</p>
+                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
+                            <p class="card-text"><b>State:</b> @app.State</p>
                             <a href="#" class="btn btn-primary">Logs</a>
                             <a href="#" class="btn btn-success">Reset</a>
                             <a href="#" class="btn btn-danger">Stop</a>
@@ -31,15 +31,15 @@
                 Windows services
             </p>
             <div>
-                @for (int x = 0; x < 7; x++)
+                @foreach (var app in Model.WindowsServiceApps)
                 {
                     <div class="card" style="background-color: #fafafa">
                         <div class="card-body">
-                            <h5 class="card-title">App name</h5>
+                            <h5 class="card-title">@app.Name</h5>
                             <br/>
-                            <p class="card-text"><b>Description:</b> app description will be there</p>
-                            <p class="card-text"><b>Terminal:</b>10.48.86.235</p>
-                            <p class="card-text"><b>State:</b> Running</p>
+                            <p class="card-text"><b>Description:</b> @app.Description</p>
+                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
+                            <p class="card-text"><b>State:</b> @app.State</p>
                             <a href="#" class="btn btn-primary">Logs</a>
                             <a href="#" class="btn btn-success">Reset</a>
                             <a href="#" class="btn btn-danger">Stop</a>
@@ -54,14 +54,14 @@
                 Scheduler services
             </p>
             <div>
-                @for (int x = 0; x < 5; x++)
+                @foreach (var app in Model.WindowsTaskSchedulerApps)
                 {
                     <div class="card" style="background-color: #fafafa">
                         <div class="card-body">
-                            <h5 class="card-title">App name</h5>
+                            <h5 class="card-title">@app.Name</h5>
                             <br/>
-                            <p class="card-text"><b>Description:</b> app description will be there</p>
-                            <p class="card-text"><b>Terminal:</b>10.48.86.235</p>
+                            <p class="card-text"><b>Description:</b> @app.Description</p>
+                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
                             <a href="#" class="btn btn-primary">Logs</a>
                         </div>
                     </div>
@@ -74,14 +74,14 @@
                 Other services
             </p>
             <div>
-                @for (int x = 0; x < 3; x++)
+                @foreach (var app in Model.OtherApps)
                 {
                     <div class="card" style="background-color: #fafafa">
                         <div class="card-body">
-                            <h5 class="card-title">App name</h5>
+                            <h5 class="card-title">@app.Name</h5>
                             <br/>
-                            <p class="card-text"><b>Description:</b> app description will be there</p>
-                            <p class="card-text"><b>Terminal:</b>10.48.86.235</p>
+                            <p class="card-text"><b>Description:</b> @app.Description</p>
+                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
                             <a href="#" class="btn btn-primary">Logs</a>
                         </div>
                     </div>

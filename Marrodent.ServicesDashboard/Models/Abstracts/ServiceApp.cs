@@ -13,6 +13,7 @@ public abstract class ServiceApp : IIdentity
     public string? TerminalAddress { get; set; }
     public string? CorrectLogAddress { get; set; }
     public string? ErrorLogAddress { get; set; }
+    public string? Description { get; set; }
 
     //Public - enum
     public readonly ServiceType Type;
