@@ -1,3 +1,95 @@
 ﻿@page
 @model IndexModel
 
+<div>
+    <div class="row col-12">
+        <div class="col-3">
+            <p class="display-4">
+                IIS services
+            </p>
+            <div>
+                @for (int x = 0; x < 10; x++)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">App name</h5>
+                            <br/>
+                            <p class="card-text"><b>Description:</b> app description will be there</p>
+                            <p class="card-text"><b>State:</b> Running</p>
+                            <a href="#" class="btn btn-primary">Logs</a>
+                            <a href="#" class="btn btn-success">Reset</a>
+                            <a href="#" class="btn btn-danger">Stop</a>
+                        </div>
+                    </div>
+                    <br/>
+                }
+            </div>
+        </div>
+        <div class="col-3">
+            <p class="display-4">
+                Windows services
+            </p>
+            <div>
+                @for (int x = 0; x < 7; x++)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">App name</h5>
+                            <br/>
+                            <p class="card-text"><b>Description:</b> app description will be there</p>
+                            <p class="card-text"><b>State:</b> Running</p>
+                            <a href="#" class="btn btn-primary">Logs</a>
+                            <a href="#" class="btn btn-success">Reset</a>
+                            <a href="#" class="btn btn-danger">Stop</a>
+                        </div>
+                    </div>
+                    <br/>
+                }
+            </div>
+        </div>
+        <div class="col-3">
+            <p class="display-4">
+                Scheduler services
+            </p>
+            <div>
+                @for (int x = 0; x < 5; x++)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">App name</h5>
+                            <br/>
+                            <p class="card-text"><b>Description:</b> app description will be there</p>
+                            <p class="card-text"><b>State:</b> Running</p>
+                            <a href="#" class="btn btn-primary">Logs</a>
+                            <a href="#" class="btn btn-success">Reset</a>
+                            <a href="#" class="btn btn-danger">Stop</a>
+                        </div>
+                    </div>
+                    <br/>
+                }
+            </div>
+        </div>
+        <div class="col-3">
+            <p class="display-4">
+                Other services
+            </p>
+            <div>
+                @for (int x = 0; x < 3; x++)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">App name</h5>
+                            <br/>
+                            <p class="card-text"><b>Description:</b> app description will be there</p>
+                            <p class="card-text"><b>State:</b> Running</p>
+                            <a href="#" class="btn btn-primary">Logs</a>
+                            <a href="#" class="btn btn-success">Reset</a>
+                            <a href="#" class="btn btn-danger">Stop</a>
+                        </div>
+                    </div>
+                    <br/>
+                }
+            </div>
+        </div>
+    </div>
+</div>

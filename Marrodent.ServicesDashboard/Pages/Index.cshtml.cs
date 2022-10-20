@@ -11,7 +11,6 @@ public sealed class IndexModel : PageModel
     public IndexModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
-        _
     }
 
     //Public
