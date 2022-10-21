@@ -10,7 +10,7 @@
             <div>
                 @foreach (var app in Model.IISApps)
                 {
-                    <div class="card" style="background-color: @app.CardColor">
+                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
                         <div class="card-body">
                             <h5 class="card-title">@app.Name</h5>
                             <br/>
@@ -33,7 +33,7 @@
             <div>
                 @foreach (var app in Model.WindowsServiceApps)
                 {
-                    <div class="card" style="background-color: @app.CardColor">
+                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
                         <div class="card-body">
                             <h5 class="card-title">@app.Name</h5>
                             <br/>
@@ -56,7 +56,7 @@
             <div>
                 @foreach (var app in Model.WindowsTaskSchedulerApps)
                 {
-                    <div class="card" style="background-color: @app.CardColor">
+                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
                         <div class="card-body">
                             <h5 class="card-title">@app.Name</h5>
                             <br/>
@@ -76,7 +76,7 @@
             <div>
                 @foreach (var app in Model.OtherApps)
                 {
-                    <div class="card" style="background-color: @app.CardColor">
+                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
                         <div class="card-body">
                             <h5 class="card-title">@app.Name</h5>
                             <br/>

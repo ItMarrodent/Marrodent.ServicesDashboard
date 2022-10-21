@@ -27,7 +27,7 @@ public abstract class ServiceApp : IIdentity
                     return "#F67280";
                 case ServiceState.Disabled:
                 case ServiceState.Unknown:
-                    return "#fafafa";
+                    return "#413839";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
