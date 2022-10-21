@@ -7,13 +7,32 @@ public abstract class ServiceApp : IIdentity
 {
     //Public - int
     public int Id { get; set; }
-    
+
     //Public - string
     public string? Name { get; set; }
     public string? TerminalAddress { get; set; }
     public string? CorrectLogAddress { get; set; }
     public string? ErrorLogAddress { get; set; }
     public string? Description { get; set; }
+
+    public string CardColor
+    {
+        get
+        {
+            switch (State)
+            {
+                case ServiceState.Running:
+                    return "#77DD77";
+                case ServiceState.Stopped: 
+                    return "#F67280";
+                case ServiceState.Disabled:
+                case ServiceState.Unknown:
+                    return "#fafafa";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
 
     //Public - enum
     public readonly ServiceType Type;
