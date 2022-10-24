@@ -10,7 +10,8 @@ public abstract class ServiceApp : IIdentity
     public int Id { get; set; }
 
     //Public - string
-    public string? Name { get; set; }
+    public string? ServiceName { get; set; }
+    public string? DisplayName { get; set; }
     public string? TerminalAddress { get; set; }
     public string? CorrectLogAddress { get; set; }
     public string? ErrorLogAddress { get; set; }
