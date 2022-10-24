@@ -81,7 +81,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.235",
     Id = 1,
     Description = "PL - export E3 data",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Poprawne",
+    ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Błędne"
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -90,7 +92,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.235",
     Id = 2,
     Description = "CZ - customer email sending service",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\EmailService\Logs\Correct",
+    ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\EmailService\Logs\Error"
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -99,7 +103,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.235",
     Id = 3,
     Description = "CZ - fillrate service report export",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\FillrateService\Logs\Correct",
+    ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\FillrateService\Logs\Error"
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -108,7 +114,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.235",
     Id = 4,
     Description = "CZ - printing documents on warehouse service",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = @"C:\PrinterService\Logs\Correct",
+    ErrorLogAddress = @"C:\PrinterService\Logs\Error"
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -117,7 +125,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.235",
     Id = 5,
     Description = "PL and CZ - enova task scheduler service",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = string.Empty,
+    ErrorLogAddress = string.Empty
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -126,7 +136,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.235",
     Id = 6,
     Description = "PL - import E3 data",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Import\Poprawne",
+    ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Import\Błędne"
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -135,7 +147,9 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.234",
     Id = 7,
     Description = "PL and CZ - checking iis services",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\IIS\Log",
+    ErrorLogAddress = string.Empty
 });
 
 windowsServiceApps.Add(new WindowsServiceApp
@@ -144,11 +158,80 @@ windowsServiceApps.Add(new WindowsServiceApp
     TerminalAddress = "10.48.86.234",
     Id = 8,
     Description = "CZ - data export from enova to helios",
-    State = ServiceState.Unknown
+    State = ServiceState.Unknown,
+    CorrectLogAddress = string.Empty,
+    ErrorLogAddress = string.Empty
 });
 
 File.WriteAllText(@"json\services.json", JsonConvert.SerializeObject(windowsServiceApps));
 
 //Scheduler
 ICollection<WindowsTaskSchedulerApp> windowsTaskSchedulerApps = new List<WindowsTaskSchedulerApp>();
+
+windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
+{
+    Name = "Autoksiegowanie faktur",
+    TerminalAddress = "10.48.86.235",
+    Id = 1,
+    Description = "PL - auto-accounting task",
+    State = ServiceState.Unknown,
+    CorrectLogAddress = "",
+    ErrorLogAddress = ""
+});
+
+windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
+{
+    Name = "BST.OperatorReplacementService",
+    TerminalAddress = "10.48.86.235",
+    Id = 2,
+    Description = "PL - calculating enova operators replacements task",
+    State = ServiceState.Unknown,
+    CorrectLogAddress = "",
+    ErrorLogAddress = ""
+});
+
+windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
+{
+    Name = "CZ Blocked products",
+    TerminalAddress = "10.48.86.235",
+    Id = 3,
+    Description = "CZ - sending email with blocked products in 24h task",
+    State = ServiceState.Unknown,
+    CorrectLogAddress = "",
+    ErrorLogAddress = ""
+});
+
+windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
+{
+    Name = "CZ Turnovers calc",
+    TerminalAddress = "10.48.86.235",
+    Id = 4,
+    Description = "PL and CZ - calculating turnovers by article/client task",
+    State = ServiceState.Unknown,
+    CorrectLogAddress = "",
+    ErrorLogAddress = ""
+});
+
+windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
+{
+    Name = "Operator logout",
+    TerminalAddress = "10.48.86.235",
+    Id = 5,
+    Description = "PL - automatic enova operators logout task",
+    State = ServiceState.Unknown,
+    CorrectLogAddress = "",
+    ErrorLogAddress = ""
+});
+
+windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
+{
+    Name = "ZSMOPL",
+    TerminalAddress = "10.48.86.235",
+    Id = 6,
+    Description = "PL - reporting drugs turnovers to gov",
+    State = ServiceState.Unknown,
+    CorrectLogAddress = "",
+    ErrorLogAddress = ""
+});
+
 File.WriteAllText(@"json\tasks.json", JsonConvert.SerializeObject(windowsTaskSchedulerApps));
