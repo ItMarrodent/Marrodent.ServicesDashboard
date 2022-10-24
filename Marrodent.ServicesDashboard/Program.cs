@@ -1,6 +1,10 @@
+using Marrodent.ServicesDashboard.Controllers;
+using Marrodent.ServicesDashboard.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IConfigurationController, ConfigurationController>();
 
 var app = builder.Build();
 
@@ -11,12 +15,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
+app.UseStaticFiles(); 
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapRazorPages();
-
 app.Run();
