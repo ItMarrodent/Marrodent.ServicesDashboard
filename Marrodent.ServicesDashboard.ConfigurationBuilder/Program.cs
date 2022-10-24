@@ -199,7 +199,7 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
 {
     ServiceName = "Autoksiegowanie faktur",
     DisplayName = "Autoksiegowanie faktur",
-    Address = "10.48.86.235",
+    Address = @"10.48.86.235 / C:\ProgramData\BST.AutoKsiegowanie",
     Id = 1,
     Description = "PL - auto-accounting task",
     State = ServiceState.Unknown,
@@ -211,7 +211,7 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
 {
     ServiceName = "BST.OperatorReplacementService",
     DisplayName = "Operator replacement service",
-    Address = "10.48.86.235",
+    Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.OperatorReplacementService",
     Id = 2,
     Description = "PL - calculating enova operators replacements task",
     State = ServiceState.Unknown,
@@ -223,7 +223,7 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
 {
     ServiceName = "CZ Blocked products",
     DisplayName = "CZ Blocked products",
-    Address = "10.48.86.235",
+    Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.CzBlockedProductsEmail",
     Id = 3,
     Description = "CZ - sending email with blocked products in 24h task",
     State = ServiceState.Unknown,
@@ -235,7 +235,7 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
 {
     ServiceName = "CZ Turnovers calc",
     DisplayName = "CZ Turnovers calc",
-    Address = "10.48.86.235",
+    Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.CzTurnoverCalc",
     Id = 4,
     Description = "PL and CZ - calculating turnovers by article/client task",
     State = ServiceState.Unknown,
@@ -247,7 +247,7 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
 {
     ServiceName = "Operator logout",
     DisplayName = "Operator logout",
-    Address = "10.48.86.235",
+    Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.OperatorLogout",
     Id = 5,
     Description = "PL - automatic enova operators logout task",
     State = ServiceState.Unknown,
@@ -259,7 +259,7 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
 {
     ServiceName = "ZSMOPL",
     DisplayName = "ZSMOPL",
-    Address = "10.48.86.235",
+    Address = @"10.48.86.235 / C:\Program Files (x86)\Soneta\enova365 2112.5.8.0",
     Id = 6,
     Description = "PL - reporting drugs turnovers to gov",
     State = ServiceState.Unknown,
