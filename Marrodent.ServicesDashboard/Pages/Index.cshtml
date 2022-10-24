@@ -3,91 +3,103 @@
 
 <div>
     <div class="row col-12">
-        <div class="col-3">
-            <p class="display-4">
-                IIS services
-            </p>
-            <div>
-                @foreach (var app in Model.IisApps)
-                {
-                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
-                        <div class="card-body">
-                            <h5 class="card-title">@app.Name</h5>
-                            <br/>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
-                            <p class="card-text"><b>State:</b> @app.State</p>
-                            <a href="#" class="btn btn-primary">Logs</a>
-                            <a href="#" class="btn btn-success">Reset</a>
-                            <a href="#" class="btn btn-danger">Stop</a>
-                        </div>
-                    </div>
-                    <br/>
-                }
-            </div>
-        </div>
-        <div class="col-3">
-            <p class="display-4">
-                Windows services
-            </p>
-            <div>
-                @foreach (var app in Model.WindowsServiceApps)
-                {
-                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
-                        <div class="card-body">
-                            <h5 class="card-title">@app.Name</h5>
-                            <br/>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
-                            <p class="card-text"><b>State:</b> @app.State</p>
-                            <a href="#" class="btn btn-primary">Logs</a>
-                            <a href="#" class="btn btn-success">Reset</a>
-                            <a href="#" class="btn btn-danger">Stop</a>
-                        </div>
-                    </div>
-                    <br/>
-                }
-            </div>
-        </div>
-        <div class="col-3">
-            <p class="display-4">
-                Scheduler services
-            </p>
-            <div>
-                @foreach (var app in Model.WindowsTaskSchedulerApps)
-                {
-                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
-                        <div class="card-body">
-                            <h5 class="card-title">@app.Name</h5>
-                            <br/>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
-                            <a href="#" class="btn btn-primary">Logs</a>
-                        </div>
-                    </div>
-                    <br/>
-                }
-            </div>
-        </div>
-        <div class="col-3">
-            <p class="display-4">
-                Other services
-            </p>
-            <div>
-                @foreach (var app in Model.OtherApps)
-                {
-                    <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
-                        <div class="card-body">
-                            <h5 class="card-title">@app.Name</h5>
-                            <br/>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
-                            <a href="#" class="btn btn-primary">Logs</a>
-                        </div>
-                    </div>
-                    <br/>
-                }
-            </div>
-        </div>
+       @if (Model.IisApps != null && Model.IisApps.Any())
+       {
+           <div class="col-3">
+               <p class="display-4">
+                   IIS services
+               </p>
+               <div>
+                   @foreach (var app in Model.IisApps)
+                   {
+                       <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
+                           <div class="card-body">
+                               <h5 class="card-title">@app.Name</h5>
+                               <br/>
+                               <p class="card-text"><b>Description:</b> @app.Description</p>
+                               <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
+                               <p class="card-text"><b>State:</b> @app.State</p>
+                               <a href="#" class="btn btn-primary">Logs</a>
+                               <a href="#" class="btn btn-success">Reset</a>
+                               <a href="#" class="btn btn-danger">Stop</a>
+                           </div>
+                       </div>
+                       <br/>
+                   }
+               </div>
+           </div>
+       }
+       @if (Model.WindowsServiceApps != null && Model.WindowsServiceApps.Any())
+       {
+       <div class="col-3">
+           <p class="display-4">
+               Windows services
+           </p>
+           <div>
+               @foreach (var app in Model.WindowsServiceApps)
+               {
+                   <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
+                       <div class="card-body">
+                           <h5 class="card-title">@app.Name</h5>
+                           <br/>
+                           <p class="card-text"><b>Description:</b> @app.Description</p>
+                           <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
+                           <p class="card-text"><b>State:</b> @app.State</p>
+                           <a href="#" class="btn btn-primary">Logs</a>
+                           <a href="#" class="btn btn-success">Reset</a>
+                           <a href="#" class="btn btn-danger">Stop</a>
+                       </div>
+                   </div>
+                   <br/>
+               }
+           </div>
+       </div>
+   }
+       @if (Model.WindowsTaskSchedulerApps != null && Model.WindowsTaskSchedulerApps.Any())
+       {
+           <div class="col-3">
+               <p class="display-4">
+                   Scheduler services
+               </p>
+               <div>
+                   @foreach (var app in Model.WindowsTaskSchedulerApps)
+                   {
+                       <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
+                           <div class="card-body">
+                               <h5 class="card-title">@app.Name</h5>
+                               <br/>
+                               <p class="card-text"><b>Description:</b> @app.Description</p>
+                               <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
+                               <a href="#" class="btn btn-primary">Logs</a>
+                           </div>
+                       </div>
+                       <br/>
+                   }
+               </div>
+           </div>
+       }
+       @if (Model.OtherApps != null && Model.OtherApps.Any())
+       {
+           <div class="col-3">
+               <p class="display-4">
+                   Other services
+               </p>
+               <div>
+                   @foreach (var app in Model.OtherApps)
+                   {
+                       <div class="card" style="border-color: @app.CardColor; border-width: 2px; background-color: #fafafa;">
+                           <div class="card-body">
+                               <h5 class="card-title">@app.Name</h5>
+                               <br/>
+                               <p class="card-text"><b>Description:</b> @app.Description</p>
+                               <p class="card-text"><b>Terminal:</b>@app.TerminalAddress</p>
+                               <a href="#" class="btn btn-primary">Logs</a>
+                           </div>
+                       </div>
+                       <br/>
+                   }
+               </div>
+           </div>
+       }
     </div>
 </div>

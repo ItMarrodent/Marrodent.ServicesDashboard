@@ -20,28 +20,28 @@ namespace Marrodent.ServicesDashboard.Controllers
         public ICollection<IISApp>? GetIisApps()
         {
             return !File.Exists($@"{_basePath}\iis.json") 
-                ? new List<IISApp>() 
+                ? null
                 : JsonConvert.DeserializeObject<List<IISApp>>(File.ReadAllText($@"{_basePath}\iis.json"));
         }
 
         public ICollection<WindowsServiceApp>? GetwWindowsServiceApps()
         {
             return !File.Exists($@"{_basePath}\services.json")
-                ? new List<WindowsServiceApp>() 
+                ? null
                 : JsonConvert.DeserializeObject<List<WindowsServiceApp>>(File.ReadAllText($@"{_basePath}\services.json"));
         }
 
         public ICollection<WindowsTaskSchedulerApp>? GetWindowsTaskSchedulerApps()
         {
             return !File.Exists($@"{_basePath}\tasks.json") 
-                ? new List<WindowsTaskSchedulerApp>() 
+                ? null
                 : JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\tasks.json"));
         }
 
         public ICollection<OtherApp>? GetOtherApps()
         {
             return !File.Exists($@"{_basePath}\other.json") 
-                ? new List<OtherApp>() 
+                ? null
                 : JsonConvert.DeserializeObject<List<OtherApp>>(File.ReadAllText($@"{_basePath}\other.json"));
         }
     }
