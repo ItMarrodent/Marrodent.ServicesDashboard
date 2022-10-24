@@ -7,5 +7,4 @@ public interface IConfigurationController
     ICollection<IISApp>? GetIisApps();
     ICollection<WindowsServiceApp>? GetwWindowsServiceApps();
     ICollection<WindowsTaskSchedulerApp>? GetWindowsTaskSchedulerApps();
-    ICollection<OtherApp>? GetOtherApps();
 }

@@ -10,7 +10,6 @@ public sealed class IndexModel : PageModel
     public ICollection<IISApp>? IisApps { get; set; }
     public ICollection<WindowsServiceApp>? WindowsServiceApps { get; set; }
     public ICollection<WindowsTaskSchedulerApp>? WindowsTaskSchedulerApps { get; set; }
-    public ICollection<OtherApp>? OtherApps { get; set; }
 
     //Private
     private readonly ILogger<IndexModel> _logger;
@@ -29,6 +28,5 @@ public sealed class IndexModel : PageModel
         IisApps = _configurationController.GetIisApps();
         WindowsServiceApps = _configurationController.GetwWindowsServiceApps();
         WindowsTaskSchedulerApps = _configurationController.GetWindowsTaskSchedulerApps();
-        OtherApps = _configurationController.GetOtherApps();
     }
 }

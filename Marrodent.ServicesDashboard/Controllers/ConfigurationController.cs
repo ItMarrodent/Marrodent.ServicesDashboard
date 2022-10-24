@@ -37,12 +37,5 @@ namespace Marrodent.ServicesDashboard.Controllers
                 ? null
                 : JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\tasks.json"));
         }
-
-        public ICollection<OtherApp>? GetOtherApps()
-        {
-            return !File.Exists($@"{_basePath}\other.json") 
-                ? null
-                : JsonConvert.DeserializeObject<List<OtherApp>>(File.ReadAllText($@"{_basePath}\other.json"));
-        }
     }
 }
