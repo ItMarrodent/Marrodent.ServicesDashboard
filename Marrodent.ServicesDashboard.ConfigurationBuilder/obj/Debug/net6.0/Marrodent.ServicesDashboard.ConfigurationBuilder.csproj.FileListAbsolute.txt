@@ -13,3 +13,16 @@ C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashb
 C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.pdb
 C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.genruntimeconfig.cache
 C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\ref\Marrodent.ServicesDashboard.ConfigurationBuilder.dll
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.deps.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.runtimeconfig.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\appsettings.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.staticwebassets.runtime.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.exe
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.dll
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.pdb
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.csproj.CopyComplete
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\iis.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\services.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\tasks.json

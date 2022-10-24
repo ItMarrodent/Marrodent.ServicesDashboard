@@ -1,5 +1,6 @@
 ﻿using Marrodent.ServicesDashboard.Models.Enum;
 using Marrodent.ServicesDashboard.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace Marrodent.ServicesDashboard.Models.Abstracts;
 
@@ -15,6 +16,7 @@ public abstract class ServiceApp : IIdentity
     public string? ErrorLogAddress { get; set; }
     public string? Description { get; set; }
 
+    [JsonIgnore]
     public string CardColor
     {
         get

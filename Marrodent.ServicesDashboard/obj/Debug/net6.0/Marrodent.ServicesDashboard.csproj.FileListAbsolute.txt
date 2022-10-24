@@ -26,3 +26,6 @@ C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashb
 C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\ref\Marrodent.ServicesDashboard.dll
 C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\Marrodent.ServicesDashboard.csproj.CopyComplete
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\iis.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\services.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\tasks.json
