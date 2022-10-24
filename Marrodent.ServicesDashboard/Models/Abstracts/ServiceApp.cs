@@ -22,7 +22,7 @@ public abstract class ServiceApp : IIdentity
     {
         get
         {
-            switch (State)
+            switch (GetState)
             {
                 case ServiceState.Running:
                     return "#77DD77";
@@ -39,7 +39,6 @@ public abstract class ServiceApp : IIdentity
 
     //Public - enum
     public readonly ServiceType Type;
-    public ServiceState State { get; set; }
     
     //CTOR
     protected ServiceApp(ServiceType type)

@@ -19,15 +19,15 @@
                                <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
                                <p class="card-text"><b>Description:</b> @app.Description</p>
                                <p class="card-text"><b>Address:</b>@app.Address</p>
-                               <p class="card-text"><b>State:</b> @app.State</p>
+                               <p class="card-text"><b>State:</b> @app.GetState</p>
                                
                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                                {
-                                   <a href="#" class="btn btn-primary">Logs</a>
+                                   <a class="btn btn-primary">Logs</a>
                                }
                                
-                               <a href="#" class="btn btn-success">Reset</a>
-                               <a href="#" class="btn btn-danger">Stop</a>
+                               <a class="btn btn-success">Reset</a>
+                               <a class="btn btn-danger">Stop</a>
                            </div>
                        </div>
                        <br/>
@@ -51,15 +51,15 @@
                            <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
                            <p class="card-text"><b>Description:</b> @app.Description</p>
                            <p class="card-text"><b>Address:</b>@app.Address</p>
-                           <p class="card-text"><b>State:</b> @app.State</p>
+                           <p class="card-text"><b>State:</b> @app.GetState</p>
                            
                             @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                             {
-                                <a href="#" class="btn btn-primary">Logs</a>
+                                <a class="btn btn-primary">Logs</a>
                             }
                            
-                           <a href="#" class="btn btn-success">Reset</a>
-                           <a href="#" class="btn btn-danger">Stop</a>
+                           <a class="btn btn-success">Reset</a>
+                           <a class="btn btn-danger">Stop</a>
                        </div>
                    </div>
                    <br/>
@@ -83,13 +83,12 @@
                                <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
                                <p class="card-text"><b>Description:</b> @app.Description</p>
                                <p class="card-text"><b>Address:</b>@app.Address</p>
-                               <p class="card-text"><b>State:</b> @app.State</p>
+                               <p class="card-text"><b>State:</b> @app.GetState</p>
                                
                                 @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                                 {
-                                    <a href="#" class="btn btn-primary">Logs</a>
+                                    <a class="btn btn-primary">Logs</a>
                                 }
-                               
                            </div>
                        </div>
                        <br/>

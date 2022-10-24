@@ -113,9 +113,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Web.Administration": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "System.DirectoryServices": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
