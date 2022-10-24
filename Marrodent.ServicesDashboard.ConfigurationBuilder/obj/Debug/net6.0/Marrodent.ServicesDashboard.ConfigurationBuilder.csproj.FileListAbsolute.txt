@@ -1,0 +1,15 @@
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.csproj.AssemblyReference.cache
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.AssemblyInfoInputs.cache
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.AssemblyInfo.cs
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.csproj.CoreCompileInputs.cache
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.exe
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.deps.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.runtimeconfig.json
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.dll
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\bin\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.pdb
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.dll
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\refint\Marrodent.ServicesDashboard.ConfigurationBuilder.dll
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.pdb
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\Marrodent.ServicesDashboard.ConfigurationBuilder.genruntimeconfig.cache
+C:\Users\brand\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard.ConfigurationBuilder\obj\Debug\net6.0\ref\Marrodent.ServicesDashboard.ConfigurationBuilder.dll

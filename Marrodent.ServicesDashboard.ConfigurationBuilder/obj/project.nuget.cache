@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eh5egx9uZzv+Uaxt4SOz2GWt+5OkTNOmL0THiD1zlK6dJz5Jt7c07TMQtDurpphAy3vXd3vE3M84VTrqLLHHcg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\brand\\RiderProjects\\Marrodent.ServicesDashboard\\Marrodent.ServicesDashboard.ConfigurationBuilder\\Marrodent.ServicesDashboard.ConfigurationBuilder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\brand\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
