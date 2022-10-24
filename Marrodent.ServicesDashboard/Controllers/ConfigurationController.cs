@@ -17,9 +17,32 @@ namespace Marrodent.ServicesDashboard.Controllers
         }
 
         //Public
-        public ICollection<IISApp>? GetIisApps => JsonConvert.DeserializeObject<List<IISApp>>(File.ReadAllText($@"{_basePath}\.json"));
-        public ICollection<WindowsServiceApp>? GetwWindowsServiceApps => JsonConvert.DeserializeObject<List<WindowsServiceApp>>(File.ReadAllText($@"{_basePath}\.json"));
-        public ICollection<WindowsTaskSchedulerApp>? GetWindowsTaskSchedulerApps => JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\.json"));
-        public ICollection<OtherApp>? GetOtherApps => JsonConvert.DeserializeObject<List<OtherApp>>(File.ReadAllText($@"{_basePath}\.json"));
+        public ICollection<IISApp>? GetIisApps()
+        {
+            return !File.Exists($@"{_basePath}\iis.json") 
+                ? new List<IISApp>() 
+                : JsonConvert.DeserializeObject<List<IISApp>>(File.ReadAllText($@"{_basePath}\iis.json"));
+        }
+
+        public ICollection<WindowsServiceApp>? GetwWindowsServiceApps()
+        {
+            return !File.Exists($@"{_basePath}\services.json")
+                ? new List<WindowsServiceApp>() 
+                : JsonConvert.DeserializeObject<List<WindowsServiceApp>>(File.ReadAllText($@"{_basePath}\services.json"));
+        }
+
+        public ICollection<WindowsTaskSchedulerApp>? GetWindowsTaskSchedulerApps()
+        {
+            return !File.Exists($@"{_basePath}\tasks.json") 
+                ? new List<WindowsTaskSchedulerApp>() 
+                : JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\tasks.json"));
+        }
+
+        public ICollection<OtherApp>? GetOtherApps()
+        {
+            return !File.Exists($@"{_basePath}\other.json") 
+                ? new List<OtherApp>() 
+                : JsonConvert.DeserializeObject<List<OtherApp>>(File.ReadAllText($@"{_basePath}\other.json"));
+        }
     }
 }

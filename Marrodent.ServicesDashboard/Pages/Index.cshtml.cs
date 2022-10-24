@@ -26,9 +26,9 @@ public sealed class IndexModel : PageModel
     //Public
     public void OnGet()
     {
-        IisApps = _configurationController.GetIisApps;
-        WindowsServiceApps = _configurationController.GetwWindowsServiceApps;
-        WindowsTaskSchedulerApps = _configurationController.GetWindowsTaskSchedulerApps;
-        OtherApps = _configurationController.GetOtherApps;
+        IisApps = _configurationController.GetIisApps();
+        WindowsServiceApps = _configurationController.GetwWindowsServiceApps();
+        WindowsTaskSchedulerApps = _configurationController.GetWindowsTaskSchedulerApps();
+        OtherApps = _configurationController.GetOtherApps();
     }
 }
