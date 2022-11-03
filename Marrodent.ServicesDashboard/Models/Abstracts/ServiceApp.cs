@@ -50,7 +50,17 @@ public abstract class ServiceApp : IIdentity
     public virtual ServiceState GetState => ServiceState.Unknown;
     public virtual ICollection<string> GetCorrectLogs(DateTime date) => GetLogsBase(date, CorrectLogAddress);
     public virtual ICollection<string> GetErrorLogs(DateTime date) => GetLogsBase(date, ErrorLogAddress);
-    
+
+    public virtual void Start()
+    {
+        
+    }
+
+    public virtual void Stop()
+    {
+        
+    }
+
     //Private - functions
     private ICollection<string> GetLogsBase(DateTime date, string path)
     {

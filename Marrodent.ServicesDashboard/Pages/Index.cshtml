@@ -23,11 +23,11 @@
                                
                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                                {
-                                   <a class="btn btn-primary">Logs</a>
+                                   <button class="btn btn-primary">Logs</button>
                                }
                                
-                               <a class="btn btn-success">Reset</a>
-                               <a class="btn btn-danger">Stop</a>
+                               <button class="btn btn-success">Reset</button>
+                               <button class="btn btn-danger">Stop</button>
                            </div>
                        </div>
                        <br/>
@@ -53,13 +53,13 @@
                            <p class="card-text"><b>Address:</b>@app.Address</p>
                            <p class="card-text"><b>State:</b> @app.GetState</p>
                            
-                            @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                            {
-                                <a class="btn btn-primary">Logs</a>
-                            }
+                           @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
+                           {
+                               <button class="btn btn-primary">Logs</button>
+                           }
                            
-                           <a class="btn btn-success">Reset</a>
-                           <a class="btn btn-danger">Stop</a>
+                           <button class="btn btn-success">Reset</button>
+                           <button class="btn btn-danger">Stop</button>
                        </div>
                    </div>
                    <br/>
@@ -87,7 +87,7 @@
                                
                                 @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                                 {
-                                    <a class="btn btn-primary">Logs</a>
+                                    <button class="btn btn-primary">Logs</button>
                                 }
                            </div>
                        </div>

@@ -16,22 +16,6 @@ namespace Marrodent.ServicesDashboard.Models.Models
         {
             get
             {
-                using var manager = ServerManager.OpenRemote(@"");
-                var site = manager.Sites.FirstOrDefault(x => x.Name == ServiceName);
-
-                if (site != null)
-                {
-                    return site.State switch
-                    {
-                        ObjectState.Starting => ServiceState.Running,
-                        ObjectState.Started => ServiceState.Running,
-                        ObjectState.Stopping => ServiceState.Stopped,
-                        ObjectState.Stopped => ServiceState.Stopped,
-                        ObjectState.Unknown => ServiceState.Unknown,
-                        _ => throw new ArgumentOutOfRangeException()
-                    };
-                }
-
                 return ServiceState.Unknown;
             }
         }

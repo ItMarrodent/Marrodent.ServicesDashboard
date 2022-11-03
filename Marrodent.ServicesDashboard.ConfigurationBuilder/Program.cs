@@ -14,7 +14,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:84",
     Id = 1,
     Description = "PL and CZ - Main plaforma and enova connection service",
-    State = ServiceState.Unknown
 });
 
 iisApps.Add(new IISApp
@@ -24,7 +23,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:89",
     Id = 2,
     Description = "CZ - data export from enova to helios",
-    State = ServiceState.Unknown
 });
 
 iisApps.Add(new IISApp
@@ -34,7 +32,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:90",
     Id = 3,
     Description = "CZ - Invoice printing on demand",
-    State = ServiceState.Unknown
 });
 
 iisApps.Add(new IISApp
@@ -44,7 +41,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:83",
     Id = 4,
     Description = "PL - rodo customer service",
-    State = ServiceState.Unknown
 });
 
 iisApps.Add(new IISApp
@@ -54,7 +50,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:92",
     Id = 5,
     Description = "PL and CZ attachment service",
-    State = ServiceState.Unknown
 });
 
 iisApps.Add(new IISApp
@@ -64,7 +59,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:82",
     Id = 6,
     Description = "PL - old attachment service",
-    State = ServiceState.Unknown
 });
 
 iisApps.Add(new IISApp
@@ -74,7 +68,6 @@ iisApps.Add(new IISApp
     Address = "10.48.86.234:85",
     Id = 7,
     Description = "CZ - old attachment service",
-    State = ServiceState.Unknown
 });
 
 File.WriteAllText(@"json\iis.json", JsonConvert.SerializeObject(iisApps));
@@ -89,7 +82,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\Marrodent E3",
     Id = 1,
     Description = "PL - export E3 data",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Poprawne",
     ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Błędne"
 });
@@ -101,7 +93,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.EmailService",
     Id = 2,
     Description = "CZ - customer email sending service",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\EmailService\Logs\Correct",
     ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\EmailService\Logs\Error"
 });
@@ -113,7 +104,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.FillrateService",
     Id = 3,
     Description = "CZ - fillrate service report export",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\FillrateService\Logs\Correct",
     ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\FillrateService\Logs\Error"
 });
@@ -125,7 +115,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.PrintService",
     Id = 4,
     Description = "CZ - printing documents on warehouse service",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\PrinterService\Logs\Correct",
     ErrorLogAddress = @"C:\PrinterService\Logs\Error"
 });
@@ -137,7 +126,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.235 / C:\EnovaServer",
     Id = 5,
     Description = "PL and CZ - enova task scheduler service",
-    State = ServiceState.Unknown,
     CorrectLogAddress = string.Empty,
     ErrorLogAddress = string.Empty
 });
@@ -149,7 +137,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\Import E3",
     Id = 6,
     Description = "PL - import E3 data",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Import\Poprawne",
     ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\E3\E3 Logi\Import\Błędne"
 });
@@ -161,7 +148,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.234 / C:\Users\bst.produkcja\Desktop\BST\IIS",
     Id = 7,
     Description = "PL and CZ - checking iis services",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\IIS\Log",
     ErrorLogAddress = string.Empty
 });
@@ -173,7 +159,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.234 / C:\enovaIntegrator",
     Id = 8,
     Description = "CZ - data export from enova to helios",
-    State = ServiceState.Unknown,
     CorrectLogAddress = string.Empty,
     ErrorLogAddress = string.Empty
 });
@@ -185,7 +170,6 @@ windowsServiceApps.Add(new WindowsServiceApp
     Address = @"10.48.86.234 / C:\Program Files (x86)\BST\WydrukWebService",
     Id = 9,
     Description = "PL - correction printing on demand in platforma",
-    State = ServiceState.Unknown,
     CorrectLogAddress = string.Empty,
     ErrorLogAddress = string.Empty
 });
@@ -202,7 +186,6 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
     Address = @"10.48.86.235 / C:\ProgramData\BST.AutoKsiegowanie",
     Id = 1,
     Description = "PL - auto-accounting task",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\ProgramData\BST.AutoKsiegowanie",
     ErrorLogAddress = string.Empty
 });
@@ -214,7 +197,6 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.OperatorReplacementService",
     Id = 2,
     Description = "PL - calculating enova operators replacements task",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Program Files (x86)\BST\BST.OperatorReplacementService\Log\Correct",
     ErrorLogAddress = @"C:\Program Files (x86)\BST\BST.OperatorReplacementService\Log\Error"
 });
@@ -226,7 +208,6 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.CzBlockedProductsEmail",
     Id = 3,
     Description = "CZ - sending email with blocked products in 24h task",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\Blocked products log\Correct",
     ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\Blocked products log\Error"
 });
@@ -238,7 +219,6 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.CzTurnoverCalc",
     Id = 4,
     Description = "PL and CZ - calculating turnovers by article/client task",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\Turnovers\Correct",
     ErrorLogAddress = @"C:\Users\bst.produkcja\Desktop\BST\Turnovers\Error"
 });
@@ -250,7 +230,6 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\BST\BST.OperatorLogout",
     Id = 5,
     Description = "PL - automatic enova operators logout task",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\Program Files (x86)\BST\BST.OperatorLogout\Log",
     ErrorLogAddress = string.Empty
 });
@@ -262,7 +241,6 @@ windowsTaskSchedulerApps.Add(new WindowsTaskSchedulerApp
     Address = @"10.48.86.235 / C:\Program Files (x86)\Soneta\enova365 2112.5.8.0",
     Id = 6,
     Description = "PL - reporting drugs turnovers to gov",
-    State = ServiceState.Unknown,
     CorrectLogAddress = @"C:\ProgramData\BST\ZSMOPL",
     ErrorLogAddress = string.Empty
 });
