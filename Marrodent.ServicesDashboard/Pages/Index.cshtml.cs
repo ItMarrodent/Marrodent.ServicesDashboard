@@ -1,5 +1,6 @@
 ﻿using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
+using Marrodent.ServicesDashboard.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -27,17 +28,7 @@ public sealed class IndexModel : PageModel
         Apps = _configurationController.GetAll();
     }
     
-    public IActionResult OnPostStart(int id)
-    {
-        return RedirectToPage("index");
-    }
-    
-    public IActionResult OnPostReset(int id)
-    {
-        return RedirectToPage("index");
-    }
-    
-    public IActionResult OnPostStop(int id)
+    public IActionResult OnPostAction(int id, ActionType type)
     {
         return RedirectToPage("index");
     }

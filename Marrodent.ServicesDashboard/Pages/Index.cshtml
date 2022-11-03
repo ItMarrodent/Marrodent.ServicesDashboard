@@ -24,21 +24,24 @@
                                 
                                 <div class="row">
                                     <div class="col-4">
-                                        <form asp-page-handler="Start" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-success col-12">Start</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Start" />
                                         </form>
                                     </div>
                                     <div class="col-4">
-                                        <form asp-page-handler="Reset" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-primary col-12">Reset</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Restart" />
                                         </form>
                                     </div>
                                     <div class="col-4">
-                                        <form asp-page-handler="Stop" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-danger col-12">Stop</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Stop" />
                                         </form>
                                     </div>
                                 </div>
@@ -70,21 +73,24 @@
                                 
                                 <div class="row">
                                     <div class="col-4">
-                                        <form asp-page-handler="Start" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-success col-12">Start</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Start" />
                                         </form>
                                     </div>
                                     <div class="col-4">
-                                        <form asp-page-handler="Reset" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-primary col-12">Reset</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Restart" />
                                         </form>
                                     </div>
                                     <div class="col-4">
-                                        <form asp-page-handler="Stop" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-danger col-12">Stop</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Stop" />
                                         </form>
                                     </div>
                                 </div>
@@ -116,21 +122,24 @@
 
                                 <div class="row">
                                     <div class="col-4">
-                                        <form asp-page-handler="Start" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-success col-12">Start</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Start" />
                                         </form>
                                     </div>
                                     <div class="col-4">
-                                        <form asp-page-handler="Reset" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-primary col-12">Reset</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Restart" />
                                         </form>
                                     </div>
                                     <div class="col-4">
-                                        <form asp-page-handler="Stop" method="post">
+                                        <form asp-page-handler="Action" method="post">
                                             <button class="btn btn-danger col-12">Stop</button>
                                             <input type="hidden" name="id" value="@app.Id" />
+                                            <input type="hidden" name="type" value="@ActionType.Stop" />
                                         </form>
                                     </div>
                                 </div>
