@@ -24,7 +24,7 @@ namespace Marrodent.ServicesDashboard.Controllers
                 : JsonConvert.DeserializeObject<List<IISApp>>(File.ReadAllText($@"{_basePath}\iis.json"));
         }
 
-        public ICollection<WindowsServiceApp>? GetwWindowsServiceApps()
+        public ICollection<WindowsServiceApp>? GetWindowsServiceApps()
         {
             return !File.Exists($@"{_basePath}\services.json")
                 ? null

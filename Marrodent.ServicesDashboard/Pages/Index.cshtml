@@ -14,7 +14,7 @@
                    {
                        <div class="card" style="border-color: @app.CardColor; border-width: 2px;">
                            <div class="card-body">
-                               <h5 class="card-title">@app.DisplayName</h5>
+                               <h2 class="card-title">@app.DisplayName</h2>
                                <br/>
                                <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
                                <p class="card-text"><b>Description:</b> @app.Description</p>
@@ -23,79 +23,38 @@
                                
                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                                {
-                                   <button class="btn btn-primary">Logs</button>
+                                   <form asp-page-handler="Logs" method="post">
+                                       <button class="btn btn-primary">Logs</button>
+                                       <input type="hidden" name="id" value="@app.Id" />
+                                   </form>
                                }
                                
-                               <button class="btn btn-success">Reset</button>
-                               <button class="btn btn-danger">Stop</button>
+                               <div class="row">
+                                   <div class="col-4">
+                                       <form asp-page-handler="Start" method="post">
+                                           <button class="btn btn-success col-12">Start</button>
+                                           <input type="hidden" name="id" value="@app.Id" />
+                                       </form>
+                                   </div>
+                                   <div class="col-4">
+                                       <form asp-page-handler="Reset" method="post">
+                                           <button class="btn btn-primary col-12">Reset</button>
+                                           <input type="hidden" name="id" value="@app.Id" />
+                                       </form>
+                                   </div>
+                                   <div class="col-4">
+                                       <form asp-page-handler="Stop" method="post">
+                                           <button class="btn btn-danger col-12">Stop</button>
+                                           <input type="hidden" name="id" value="@app.Id" />
+                                       </form>
+                                   </div>
+                               </div>
                            </div>
                        </div>
                        <br/>
                    }
                </div>
            </div>
-       }
-       @if (Model.WindowsServiceApps != null && Model.WindowsServiceApps.Any())
-       {
-       <div class="col-4">
-           <p class="display-4">
-               Windows services
-           </p>
-           <div>
-               @foreach (var app in Model.WindowsServiceApps)
-               {
-                   <div class="card" style="border-color: @app.CardColor; border-width: 2px;">
-                       <div class="card-body">
-                           <h5 class="card-title">@app.DisplayName</h5>
-                           <br/>
-                           <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                           <p class="card-text"><b>Description:</b> @app.Description</p>
-                           <p class="card-text"><b>Address:</b>@app.Address</p>
-                           <p class="card-text"><b>State:</b> @app.GetState</p>
-                           
-                           @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                           {
-                               <button class="btn btn-primary">Logs</button>
-                           }
-                           
-                           <button class="btn btn-success">Reset</button>
-                           <button class="btn btn-danger">Stop</button>
-                       </div>
-                   </div>
-                   <br/>
-               }
-           </div>
-       </div>
-   }
-       @if (Model.WindowsTaskSchedulerApps != null && Model.WindowsTaskSchedulerApps.Any())
-       {
-           <div class="col-4">
-               <p class="display-4">
-                   Scheduler services
-               </p>
-               <div>
-                   @foreach (var app in Model.WindowsTaskSchedulerApps)
-                   {
-                       <div class="card" style="border-color: @app.CardColor; border-width: 2px;">
-                           <div class="card-body">
-                               <h5 class="card-title">@app.DisplayName</h5>
-                               <br/>
-                               <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                               <p class="card-text"><b>Description:</b> @app.Description</p>
-                               <p class="card-text"><b>Address:</b>@app.Address</p>
-                               <p class="card-text"><b>State:</b> @app.GetState</p>
-                               
-                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                                {
-                                    <button class="btn btn-primary">Logs</button>
-                                }
-                           </div>
-                       </div>
-                       <br/>
-                   }
-               </div>
-           </div>
-       }
        }
     </div>
 </div>

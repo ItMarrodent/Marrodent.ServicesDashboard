@@ -5,6 +5,6 @@ namespace Marrodent.ServicesDashboard.Interfaces;
 public interface IConfigurationController
 {
     ICollection<IISApp>? GetIisApps();
-    ICollection<WindowsServiceApp>? GetwWindowsServiceApps();
+    ICollection<WindowsServiceApp>? GetWindowsServiceApps();
     ICollection<WindowsTaskSchedulerApp>? GetWindowsTaskSchedulerApps();
 }

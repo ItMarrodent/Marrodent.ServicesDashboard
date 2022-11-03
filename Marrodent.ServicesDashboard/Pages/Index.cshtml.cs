@@ -1,5 +1,6 @@
 ﻿using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Marrodent.ServicesDashboard.Pages;
@@ -26,7 +27,26 @@ public sealed class IndexModel : PageModel
     public void OnGet()
     {
         IisApps = _configurationController.GetIisApps();
-        WindowsServiceApps = _configurationController.GetwWindowsServiceApps();
+        WindowsServiceApps = _configurationController.GetWindowsServiceApps();
         WindowsTaskSchedulerApps = _configurationController.GetWindowsTaskSchedulerApps();
+    }
+    public IActionResult OnPostStart(int id)
+    {
+        return RedirectToPage("index");
+    }
+    
+    public IActionResult OnPostReset(int id)
+    {
+        return RedirectToPage("index");
+    }
+    
+    public IActionResult OnPostStop(int id)
+    {
+        return RedirectToPage("index");
+    }
+    
+    public IActionResult OnPostLog(int id)
+    {
+        return RedirectToPage("index");
     }
 }
