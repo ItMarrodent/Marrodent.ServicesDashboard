@@ -9,5 +9,14 @@ namespace Marrodent.ServicesDashboard.Models.Models
         public WindowsTaskSchedulerApp() : base(ServiceType.WindowsTaskScheduler)
         {
         }
+        
+        //Public
+        public override ServiceState GetState
+        {
+            get
+            {
+                return ServiceState.Unknown;
+            }
+        }
     }
 }
