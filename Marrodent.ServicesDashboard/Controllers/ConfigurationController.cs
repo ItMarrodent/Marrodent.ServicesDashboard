@@ -2,6 +2,7 @@
 using System.Reflection;
 using Newtonsoft.Json;
 using Marrodent.ServicesDashboard.Interfaces;
+using Marrodent.ServicesDashboard.Models.Abstracts;
 
 namespace Marrodent.ServicesDashboard.Controllers
 {
@@ -17,6 +18,17 @@ namespace Marrodent.ServicesDashboard.Controllers
         }
 
         //Public
+        public ICollection<ServiceApp> GetAll()
+        {
+            List<ServiceApp> result = new List<ServiceApp>();
+            
+            result.AddRange(GetIisApps()!);
+            result.AddRange(GetWindowsServiceApps()!);
+            result.AddRange(GetWindowsTaskSchedulerApps()!);
+
+            return result;
+        }
+
         public ICollection<IISApp>? GetIisApps()
         {
             return !File.Exists($@"{_basePath}\iis.json") 

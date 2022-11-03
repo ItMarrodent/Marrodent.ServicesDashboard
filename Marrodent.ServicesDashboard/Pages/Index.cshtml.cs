@@ -1,5 +1,6 @@
 ﻿using Marrodent.ServicesDashboard.Interfaces;
-using Marrodent.ServicesDashboard.Models.Models;
+using Marrodent.ServicesDashboard.Models.Abstracts;
+using Marrodent.ServicesDashboard.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -8,10 +9,8 @@ namespace Marrodent.ServicesDashboard.Pages;
 public sealed class IndexModel : PageModel
 {
     //Public
-    public ICollection<IISApp>? IisApps { get; set; }
-    public ICollection<WindowsServiceApp>? WindowsServiceApps { get; set; }
-    public ICollection<WindowsTaskSchedulerApp>? WindowsTaskSchedulerApps { get; set; }
-
+    public ICollection<ServiceApp>? Apps { get; set; }
+    
     //Private
     private readonly ILogger<IndexModel> _logger;
     private readonly IConfigurationController _configurationController;
@@ -26,21 +25,20 @@ public sealed class IndexModel : PageModel
     //Public
     public void OnGet()
     {
-        IisApps = _configurationController.GetIisApps();
-        WindowsServiceApps = _configurationController.GetWindowsServiceApps();
-        WindowsTaskSchedulerApps = _configurationController.GetWindowsTaskSchedulerApps();
+        Apps = _configurationController.GetAll();
     }
-    public IActionResult OnPostStart(int id)
+    
+    public IActionResult OnPostStart(int id, ServiceType type)
     {
         return RedirectToPage("index");
     }
     
-    public IActionResult OnPostReset(int id)
+    public IActionResult OnPostReset(int id, ServiceType type)
     {
         return RedirectToPage("index");
     }
     
-    public IActionResult OnPostStop(int id)
+    public IActionResult OnPostStop(int id, ServiceType type)
     {
         return RedirectToPage("index");
     }
