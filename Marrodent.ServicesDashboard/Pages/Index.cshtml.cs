@@ -30,6 +30,26 @@ public sealed class IndexModel : PageModel
     
     public IActionResult OnPostAction(int id, ActionType type)
     {
+        ServiceApp? app = Apps?.FirstOrDefault();
+        
+        if(app == null) return RedirectToPage("index");
+
+        switch (type)
+        {
+            case ActionType.Start:
+                app.Start();  
+                break;
+            case ActionType.Restart:
+                app.Stop();
+                app.Start();
+                break;
+            case ActionType.Stop:
+                app.Stop();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+        
         return RedirectToPage("index");
     }
 }
