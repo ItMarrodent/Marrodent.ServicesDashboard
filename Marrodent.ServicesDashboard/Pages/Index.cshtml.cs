@@ -44,9 +44,4 @@ public sealed class IndexModel : PageModel
     {
         return RedirectToPage("index");
     }
-    
-    public IActionResult OnPostLog(int id)
-    {
-        return RedirectToPage("index");
-    }
 }
