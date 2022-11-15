@@ -23,27 +23,33 @@
                                 <p class="card-text"><b>State:</b> @app.State</p>
                                 
                                 <div class="row">
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-success col-12">Start</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Start" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-primary col-12">Reset</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Restart" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-danger col-12">Stop</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Stop" />
-                                        </form>
-                                    </div>
+                                    @if (@app.State == ServiceState.Stopped)
+                                    {
+                                        <div class="col-4">
+                                            <form asp-page-handler="Action" method="post">
+                                                <button class="btn btn-success col-12">Start</button>
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <input type="hidden" name="type" value="@ActionType.Start" />
+                                            </form>
+                                        </div>
+                                    }
+                                    @if (app.State == ServiceState.Running)
+                                    {
+                                        <div class="col-4">
+                                            <form asp-page-handler="Action" method="post">
+                                                <button class="btn btn-primary col-12">Reset</button>
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <input type="hidden" name="type" value="@ActionType.Restart" />
+                                            </form>
+                                        </div>
+                                        <div class="col-4">
+                                            <form asp-page-handler="Action" method="post">
+                                                <button class="btn btn-danger col-12">Stop</button>
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <input type="hidden" name="type" value="@ActionType.Stop" />
+                                            </form>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -72,29 +78,33 @@
                                 <p class="card-text"><b>State:</b> @app.State</p>
                                 
                                 <div class="row">
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-success col-12">Start</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Start" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-primary col-12">Reset</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="typeaa
-
-" value="@ActionType.Restart" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-danger col-12">Stop</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Stop" />
-                                        </form>
-                                    </div>
+                                    @if (@app.State == ServiceState.Stopped)
+                                    {
+                                        <div class="col-4">
+                                            <form asp-page-handler="Action" method="post">
+                                                <button class="btn btn-success col-12">Start</button>
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <input type="hidden" name="type" value="@ActionType.Start" />
+                                            </form>
+                                        </div>
+                                    }
+                                    @if (app.State == ServiceState.Running)
+                                    {
+                                        <div class="col-4">
+                                            <form asp-page-handler="Action" method="post">
+                                                <button class="btn btn-primary col-12">Reset</button>
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <input type="hidden" name="type" value="@ActionType.Restart" />
+                                            </form>
+                                        </div>
+                                        <div class="col-4">
+                                            <form asp-page-handler="Action" method="post">
+                                                <button class="btn btn-danger col-12">Stop</button>
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <input type="hidden" name="type" value="@ActionType.Stop" />
+                                            </form>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -120,30 +130,7 @@
                                 <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
                                 <p class="card-text"><b>Description:</b> @app.Description</p>
                                 <p class="card-text"><b>Address:</b>@app.Address</p>
-
-                                <div class="row">
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-success col-12">Start</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Start" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-primary col-12">Reset</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Restart" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-danger col-12">Stop</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Stop" />
-                                        </form>
-                                    </div>
-                                </div>
+                                <p class="card-text"><b>State:</b> @app.State</p>
                             </div>
                         </div>
                         <br/>

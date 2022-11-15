@@ -40,14 +40,14 @@ public sealed class IndexModel : PageModel
         switch (type)
         {
             case ActionType.Start:
-                app.Start();  
+                Start(app);  
                 break;
             case ActionType.Restart:
-                app.Stop();
-                app.Start();
+                Stop(app);
+                Start(app);
                 break;
             case ActionType.Stop:
-                app.Stop();
+                Stop(app);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -55,8 +55,16 @@ public sealed class IndexModel : PageModel
         
         return RedirectToPage("index");
     }
-    
+
     //Private
+    private void Start(ServiceApp app)
+    {
+    }
+
+    private void Stop(ServiceApp app)
+    {
+    }
+
     private async Task GetState()
     {
         foreach (ServiceApp app in Apps)
