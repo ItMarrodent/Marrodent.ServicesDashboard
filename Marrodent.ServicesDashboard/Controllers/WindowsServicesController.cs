@@ -35,12 +35,14 @@ namespace Marrodent.ServicesDashboard.Controllers
         {
             ServiceController sc = new ServiceController(service, address);
             sc.Start();
+            sc.WaitForStatus(ServiceControllerStatus.Running);
         }
 
         public void Stop(string service, string address)
         {
             ServiceController sc = new ServiceController(service, address);
             sc.Stop();
+            sc.WaitForStatus(ServiceControllerStatus.Stopped);
         }
 
         public ServiceState GetState(string service, string address) => _processes[address].Contains(service) ? ServiceState.Running : ServiceState.Stopped;

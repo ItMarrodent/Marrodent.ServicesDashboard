@@ -47,13 +47,32 @@ public sealed class IISController : IWebServiceController
         };
     }
 
-    public Task Start(string websiteName)
+    public async Task Start(string websiteName)
     {
-        throw new NotImplementedException();
+        var website = await GetWebsite(websiteName);
+        website.status = "started";
+        SetWebsite(website);
     }
 
-    public Task Stop(string websiteName)
+    public async Task Stop(string websiteName)
     {
-        throw new NotImplementedException();
+        var website = await GetWebsite(websiteName);
+        website.status = "stopped";
+        SetWebsite(website);
+    }
+    
+    //Private
+    private async Task SetWebsite(IISWebsiteDetail website)
+    {
+        var request = new RestRequest($"api/webserver/websites/{website.id}", Method.PATCH);
+        request.AddJsonBody(JsonConvert.SerializeObject(website));
+        await _client.ExecuteAsync(request);
+    }
+    
+    private async Task<IISWebsiteDetail> GetWebsite(string websiteName)
+    {
+        IISWebsite website = _websites.First(x => x.name == websiteName);
+        var response  = await _client.ExecuteAsync( new RestRequest($"api/webserver/websites/{website.id}"));
+        return JsonConvert.DeserializeObject<IISWebsiteDetail>(response.Content);
     }
 }
