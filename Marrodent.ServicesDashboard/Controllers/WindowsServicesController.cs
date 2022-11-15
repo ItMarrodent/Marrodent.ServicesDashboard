@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.ServiceProcess;
 using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Enum;
 using Marrodent.ServicesDashboard.Models.Models;
@@ -32,12 +33,14 @@ namespace Marrodent.ServicesDashboard.Controllers
 
         public void Start(string service, string address)
         {
-            Process.Start("CMD.exe", $"/C sc \\\\{address} start \"{service}\"");
+            ServiceController sc = new ServiceController(service, address);
+            sc.Start();
         }
 
         public void Stop(string service, string address)
         {
-            Process.Start("CMD.exe", $"/C sc \\\\{address} stop \"{service}\"");
+            ServiceController sc = new ServiceController(service, address);
+            sc.Stop();
         }
 
         public ServiceState GetState(string service, string address) => _processes[address].Contains(service) ? ServiceState.Running : ServiceState.Stopped;
