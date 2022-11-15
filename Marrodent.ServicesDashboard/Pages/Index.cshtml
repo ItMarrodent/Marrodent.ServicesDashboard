@@ -13,7 +13,7 @@
                 <div>
                     @foreach (var app in Model.Apps.Where(x=>x.Type == ServiceType.IIS))
                     {
-                        <div class="card" style="border-color: @app.CardColor; border-width: 2px;">
+                        <div class="card" style="background: @app.CardColor; color: white;">
                             <div class="card-body">
                                 <h2 class="card-title">@app.DisplayName</h2>
                                 <br/>
@@ -27,7 +27,7 @@
                                     {
                                         <div class="col-4">
                                             <form asp-page-handler="Action" method="post">
-                                                <button class="btn btn-success col-12">Start</button>
+                                                <button class="btn btn-dark col-12">Start</button>
                                                 <input type="hidden" name="id" value="@app.Id" />
                                                 <input type="hidden" name="type" value="@ActionType.Start" />
                                             </form>
@@ -37,14 +37,14 @@
                                     {
                                         <div class="col-4">
                                             <form asp-page-handler="Action" method="post">
-                                                <button class="btn btn-primary col-12">Reset</button>
+                                                <button class="btn btn-dark col-12">Reset</button>
                                                 <input type="hidden" name="id" value="@app.Id" />
                                                 <input type="hidden" name="type" value="@ActionType.Restart" />
                                             </form>
                                         </div>
                                         <div class="col-4">
                                             <form asp-page-handler="Action" method="post">
-                                                <button class="btn btn-danger col-12">Stop</button>
+                                                <button class="btn btn-dark col-12">Stop</button>
                                                 <input type="hidden" name="id" value="@app.Id" />
                                                 <input type="hidden" name="type" value="@ActionType.Stop" />
                                             </form>
@@ -68,7 +68,7 @@
                 <div>
                     @foreach (var app in Model.Apps.Where(x=>x.Type == ServiceType.WindowsService))
                     {
-                        <div class="card" style="border-color: @app.CardColor; border-width: 2px;">
+                        <div class="card" style="background: @app.CardColor; color: white;">
                             <div class="card-body">
                                 <h2 class="card-title">@app.DisplayName</h2>
                                 <br/>
@@ -82,7 +82,7 @@
                                     {
                                         <div class="col-4">
                                             <form asp-page-handler="Action" method="post">
-                                                <button class="btn btn-success col-12">Start</button>
+                                                <button class="btn btn-dark col-12">Start</button>
                                                 <input type="hidden" name="id" value="@app.Id" />
                                                 <input type="hidden" name="type" value="@ActionType.Start" />
                                             </form>
@@ -92,14 +92,14 @@
                                     {
                                         <div class="col-4">
                                             <form asp-page-handler="Action" method="post">
-                                                <button class="btn btn-primary col-12">Reset</button>
+                                                <button class="btn btn-dark col-12">Reset</button>
                                                 <input type="hidden" name="id" value="@app.Id" />
                                                 <input type="hidden" name="type" value="@ActionType.Restart" />
                                             </form>
                                         </div>
                                         <div class="col-4">
                                             <form asp-page-handler="Action" method="post">
-                                                <button class="btn btn-danger col-12">Stop</button>
+                                                <button class="btn btn-dark col-12">Stop</button>
                                                 <input type="hidden" name="id" value="@app.Id" />
                                                 <input type="hidden" name="type" value="@ActionType.Stop" />
                                             </form>
@@ -123,7 +123,7 @@
                 <div>
                     @foreach (var app in Model.Apps.Where(x=>x.Type == ServiceType.WindowsTaskScheduler))
                     {
-                        <div class="card" style="border-color: @app.CardColor; border-width: 2px;">
+                        <div class="card" style="background: @app.CardColor; color: white;">
                             <div class="card-body">
                                 <h2 class="card-title">@app.DisplayName</h2>
                                 <br/>

@@ -25,9 +25,9 @@ public abstract class ServiceApp : IIdentity
             switch (State)
             {
                 case ServiceState.Running:
-                    return "#77DD77";
+                    return "#449e48";
                 case ServiceState.Stopped: 
-                    return "#F67280";
+                    return "#990000";
                 case ServiceState.Disabled:
                 case ServiceState.Unknown:
                     return "#413839";
