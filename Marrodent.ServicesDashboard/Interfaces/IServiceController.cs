@@ -4,5 +4,5 @@ namespace Marrodent.ServicesDashboard.Interfaces;
 
 public interface IServiceController
 {
-    ServiceState GetState(string websiteName);
+     Task<ServiceState> GetState(string websiteName);
 }

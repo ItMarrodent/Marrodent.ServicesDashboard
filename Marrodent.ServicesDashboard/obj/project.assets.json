@@ -162,15 +162,15 @@
           }
         }
       },
-      "RestSharp/108.0.2": {
+      "RestSharp/106.15.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/RestSharp.dll": {
+          "lib/netstandard2.0/RestSharp.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/RestSharp.dll": {
+          "lib/netstandard2.0/RestSharp.dll": {
             "related": ".xml"
           }
         }
@@ -1678,20 +1678,18 @@
         "packageIcon.png"
       ]
     },
-    "RestSharp/108.0.2": {
-      "sha512": "zI1lzI+Jjzl6bcicyUYfLIGmmOAdJRkYepMnSPzrxd1o9RxztPaR/blUOmY8BpXdN3I+XlK9dtwCYRGCxvaODw==",
+    "RestSharp/106.15.0": {
+      "sha512": "HM7ohR6AscxedNenrrl93DSZG6hvdnA7O+NHyCl/6ZKTfn8psQ9rRmUpcb9eWr+140vmfxoVemql0bUoeGEW3A==",
       "type": "package",
-      "path": "restsharp/108.0.2",
+      "path": "restsharp/106.15.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net5.0/RestSharp.dll",
-        "lib/net5.0/RestSharp.xml",
-        "lib/net6.0/RestSharp.dll",
-        "lib/net6.0/RestSharp.xml",
+        "lib/net452/RestSharp.dll",
+        "lib/net452/RestSharp.xml",
         "lib/netstandard2.0/RestSharp.dll",
         "lib/netstandard2.0/RestSharp.xml",
-        "restsharp.108.0.2.nupkg.sha512",
+        "restsharp.106.15.0.nupkg.sha512",
         "restsharp.nuspec",
         "restsharp.png"
       ]
@@ -5041,7 +5039,7 @@
     "net6.0": [
       "Microsoft.Web.Administration >= 11.1.0",
       "Newtonsoft.Json >= 13.0.1",
-      "RestSharp >= 108.0.2",
+      "RestSharp >= 106.15.0",
       "System.DirectoryServices >= 6.0.0"
     ]
   },
@@ -5100,7 +5098,7 @@
           },
           "RestSharp": {
             "target": "Package",
-            "version": "[108.0.2, )"
+            "version": "[106.15.0, )"
           },
           "System.DirectoryServices": {
             "target": "Package",

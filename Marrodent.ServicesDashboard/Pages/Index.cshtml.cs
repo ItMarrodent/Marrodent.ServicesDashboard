@@ -25,10 +25,10 @@ public sealed class IndexModel : PageModel
     }
 
     //Public
-    public void OnGet()
+    public async Task OnGet()
     {
-        Apps = _configurationController.GetAll();
-        GetState();
+        Apps = _configurationController.GetAll(); 
+        await GetState();
     }
     
     public IActionResult OnPostAction(int id, ActionType type)
@@ -57,13 +57,13 @@ public sealed class IndexModel : PageModel
     }
     
     //Private
-    private void GetState()
+    private async Task GetState()
     {
         foreach (ServiceApp app in Apps)
         {
             if (app.Type == ServiceType.IIS)
             {
-                app.State = _iisController.GetState(app.ServiceName);
+                app.State = await _iisController.GetState(app.ServiceName);
             }
         }
     }

@@ -55,7 +55,7 @@
             },
             "RestSharp": {
               "target": "Package",
-              "version": "[108.0.2, )"
+              "version": "[106.15.0, )"
             },
             "System.DirectoryServices": {
               "target": "Package",

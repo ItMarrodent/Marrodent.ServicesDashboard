@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UEjaJaDjQ72bg4WcbK+fDzkNCO4cKKMnstqg0mkwlbjZ1aY0RB2emZOyVMCqO41X/SntDBGX2E7o2a+LnEgcgg==",
+  "dgSpecHash": "D6W/aFK4QosJzK6S/royJESL+5xky8wIEQqp1kmZ9pZigWAxEgasvYpMeIFL+L36ev59d5QBhJY9Zi07j/AdAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\dawid.grzeszuk\\RiderProjects\\Marrodent.ServicesDashboard\\Marrodent.ServicesDashboard\\Marrodent.ServicesDashboard.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,7 @@
     "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
     "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
+    "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\restsharp\\106.15.0\\restsharp.106.15.0.nupkg.sha512",
     "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
     "C:\\Users\\dawid.grzeszuk\\.nuget\\packages\\runtime.native.system.net.http\\4.0.1\\runtime.native.system.net.http.4.0.1.nupkg.sha512",
