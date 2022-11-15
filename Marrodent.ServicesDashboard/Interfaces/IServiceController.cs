@@ -4,6 +4,6 @@ namespace Marrodent.ServicesDashboard.Interfaces;
 
 public interface IServiceController
 {
-     Task Refresh();
-     Task<ServiceState> GetState(string websiteName);
+    void Refresh();
+    ServiceState GetState(string websiteName);
 }

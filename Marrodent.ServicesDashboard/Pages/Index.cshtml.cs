@@ -14,14 +14,16 @@ public sealed class IndexModel : PageModel
     //Private
     private readonly ILogger<IndexModel> _logger;
     private readonly IConfigurationController _configurationController;
-    private readonly IServiceController _iisController;
+    private readonly IWebServiceController _webServiceController;
+    private readonly IServiceController _serviceController;
 
     //CTOR
-    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController, IServiceController iisController)
+    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController, IWebServiceController webServiceController, IServiceController serviceController)
     {
         _logger = logger;
         _configurationController = configurationController;
-        _iisController = iisController;
+        _webServiceController = webServiceController;
+        _serviceController = serviceController;
     }
 
     //Public
@@ -67,14 +69,17 @@ public sealed class IndexModel : PageModel
 
     private async Task GetState()
     {
-        await _iisController.Refresh();
+        await _webServiceController.Refresh();
+        _serviceController.Refresh();
         
         foreach (ServiceApp app in Apps)
         {
-            if (app.Type == ServiceType.IIS)
+            app.State = app.Type switch
             {
-                app.State = await _iisController.GetState(app.ServiceName);
-            }
+                ServiceType.IIS => await _webServiceController.GetState(app.ServiceName),
+                ServiceType.WindowsService => _serviceController.GetState(app.ServiceName),
+                _ => app.State
+            };
         }
     }
 }

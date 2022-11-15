@@ -5,7 +5,8 @@ using Marrodent.ServicesDashboard.Models.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IServiceController, IISController>();
+builder.Services.AddSingleton<IWebServiceController, IISController>();
+builder.Services.AddSingleton<IServiceController, WindowsServicesController>();
 builder.Services.AddSingleton<IConfigurationController, ConfigurationController>();
 builder.Services.AddRazorPages();
 builder.Services.AddOptions();

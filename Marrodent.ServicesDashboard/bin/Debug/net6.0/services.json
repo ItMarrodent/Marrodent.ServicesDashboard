@@ -2,7 +2,7 @@
     {
        "Type":2,
        "Id":8,
-       "ServiceName":"AutomatE3",
+       "ServiceName":"BST.MarrodentAutomatyzacjaE3",
        "DisplayName":"Export E3",
        "Address":"10.48.86.235 / C:\\Program Files (x86)\\BST\\Marrodent E3",
        "CorrectLogAddress":"C:\\Users\\bst.produkcja\\Desktop\\E3\\E3 Logi\\Poprawne",
@@ -38,7 +38,7 @@
     {
        "Type":2,
        "Id":11,
-       "ServiceName":"BST.PrintService",
+       "ServiceName":"BST.PrintingService",
        "DisplayName":"Print service",
        "Address":"10.48.86.235 / C:\\Program Files (x86)\\BST\\BST.PrintService",
        "CorrectLogAddress":"C:\\PrinterService\\Logs\\Correct",
@@ -50,7 +50,7 @@
     {
        "Type":2,
        "Id":12,
-       "ServiceName":"enovaServer",
+       "ServiceName":"SonetaServer",
        "DisplayName":"Enova task scheduler",
        "Address":"10.48.86.235 / C:\\EnovaServer",
        "CorrectLogAddress":"",
@@ -62,7 +62,7 @@
     {
        "Type":2,
        "Id":13,
-       "ServiceName":"ImportE3",
+       "ServiceName":"BST.ImportE3",
        "DisplayName":"Import E3",
        "Address":"10.48.86.235 / C:\\Program Files (x86)\\BST\\Import E3",
        "CorrectLogAddress":"C:\\Users\\bst.produkcja\\Desktop\\E3\\E3 Logi\\Import\\Poprawne",
@@ -86,7 +86,7 @@
     {
        "Type":2,
        "Id":15,
-       "ServiceName":"enovaServer",
+       "ServiceName":"SonetaServer",
        "DisplayName":"Enova integrator",
        "Address":"10.48.86.234 / C:\\enovaIntegrator",
        "CorrectLogAddress":"",

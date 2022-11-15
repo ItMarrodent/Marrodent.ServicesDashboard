@@ -9,7 +9,7 @@ using RestSharp.Authenticators;
 
 namespace Marrodent.ServicesDashboard.Controllers;
 
-public sealed class IISController : IServiceController
+public sealed class IISController : IWebServiceController
 {
     //Private
     private readonly IISConfig _config;

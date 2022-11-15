@@ -6,7 +6,7 @@ namespace Marrodent.ServicesDashboard.Models.Models
 {
     public sealed class IISApp : ServiceApp
     {
-        private readonly IServiceController _iisControler;
+        private readonly IWebServiceController _iisControler;
 
         //CTOR
         public IISApp() : base(ServiceType.IIS)
