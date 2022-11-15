@@ -52,6 +52,8 @@ public sealed class IndexModel : PageModel
             case ActionType.Stop:
                 Stop(app);
                 break;
+            case ActionType.Log:
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
