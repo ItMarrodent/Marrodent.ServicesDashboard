@@ -16,14 +16,16 @@ public sealed class IndexModel : PageModel
     private readonly IConfigurationController _configurationController;
     private readonly IWebServiceController _webServiceController;
     private readonly IServiceController _serviceController;
+    private readonly ILogController _logController;
 
     //CTOR
-    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController, IWebServiceController webServiceController, IServiceController serviceController)
+    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController, IWebServiceController webServiceController, IServiceController serviceController, ILogController logController)
     {
         _logger = logger;
         _configurationController = configurationController;
         _webServiceController = webServiceController;
         _serviceController = serviceController;
+        _logController = logController;
     }
 
     //Public
@@ -68,6 +70,7 @@ public sealed class IndexModel : PageModel
         {
             case ServiceType.IIS:
                 _webServiceController.Start(app.ServiceName);
+                Thread.Sleep(2000);
                 break;
             case ServiceType.WindowsService:
                 _serviceController.Start(app.WindowsServiceName, app.Address);
@@ -81,6 +84,7 @@ public sealed class IndexModel : PageModel
         {
             case ServiceType.IIS:
                 _webServiceController.Stop(app.ServiceName);
+                Thread.Sleep(2000);
                 break;
             case ServiceType.WindowsService:
                 _serviceController.Stop(app.WindowsServiceName, app.Address);
@@ -90,7 +94,7 @@ public sealed class IndexModel : PageModel
 
     private void Log(ServiceApp app)
     {
-        
+        _logController.GetLogs(app);
     }
 
     private async Task GetState()
