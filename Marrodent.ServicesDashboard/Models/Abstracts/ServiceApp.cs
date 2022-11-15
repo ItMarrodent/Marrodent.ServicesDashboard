@@ -22,7 +22,7 @@ public abstract class ServiceApp : IIdentity
     {
         get
         {
-            switch (GetState)
+            switch (State)
             {
                 case ServiceState.Running:
                     return "#77DD77";
@@ -39,7 +39,8 @@ public abstract class ServiceApp : IIdentity
 
     //Public - enum
     public readonly ServiceType Type;
-    
+    public ServiceState State { get; set; }
+
     //CTOR
     protected ServiceApp(ServiceType type)
     {
@@ -47,7 +48,6 @@ public abstract class ServiceApp : IIdentity
     }
 
     //Public - functions
-    public virtual ServiceState GetState => ServiceState.Unknown;
     public virtual ICollection<string> GetCorrectLogs(DateTime date) => GetLogsBase(date, CorrectLogAddress);
     public virtual ICollection<string> GetErrorLogs(DateTime date) => GetLogsBase(date, ErrorLogAddress);
 

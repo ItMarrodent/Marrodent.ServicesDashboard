@@ -1,5 +1,4 @@
-﻿using Marrodent.ServicesDashboard.Controllers;
-using Marrodent.ServicesDashboard.Interfaces;
+﻿using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
 using Marrodent.ServicesDashboard.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +28,7 @@ public sealed class IndexModel : PageModel
     public void OnGet()
     {
         Apps = _configurationController.GetAll();
+        GetState();
     }
     
     public IActionResult OnPostAction(int id, ActionType type)
@@ -54,5 +54,17 @@ public sealed class IndexModel : PageModel
         }
         
         return RedirectToPage("index");
+    }
+    
+    //Private
+    private void GetState()
+    {
+        foreach (ServiceApp app in Apps)
+        {
+            if (app.Type == ServiceType.IIS)
+            {
+                app.State = _iisController.GetState(app.ServiceName);
+            }
+        }
     }
 }

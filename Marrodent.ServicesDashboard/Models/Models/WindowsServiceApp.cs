@@ -9,14 +9,5 @@ namespace Marrodent.ServicesDashboard.Models.Models
         public WindowsServiceApp() : base(ServiceType.WindowsService)
         {
         }
-        
-        //Public
-        public override ServiceState GetState
-        {
-            get
-            {
-                return ServiceState.Unknown;
-            }
-        }
     }
 }
