@@ -61,6 +61,15 @@ public sealed class IndexModel : PageModel
     //Private
     private void Start(ServiceApp app)
     {
+        switch (app.Type)
+        {
+            case ServiceType.IIS:
+                _webServiceController.Stop(app.ServiceName);
+                break;
+            case ServiceType.WindowsService:
+                _serviceController.Stop(app.ServiceName, app.Address);
+                break;
+        }
     }
 
     private void Stop(ServiceApp app)

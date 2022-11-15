@@ -46,4 +46,9 @@ public sealed class IISController : IWebServiceController
             _ => ServiceState.Unknown
         };
     }
+
+    public Task Stop(string websiteName)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -30,6 +30,11 @@ namespace Marrodent.ServicesDashboard.Controllers
             }
         }
 
+        public void Stop(string websiteName, string address)
+        {
+            throw new NotImplementedException();
+        }
+
         public ServiceState GetState(string service, string address) => _processes[address].Contains(service) ? ServiceState.Running : ServiceState.Stopped;
     }
 }
