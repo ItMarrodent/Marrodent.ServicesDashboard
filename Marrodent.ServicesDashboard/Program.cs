@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IWebServiceController, IISController>();
 builder.Services.AddSingleton<IServiceController, WindowsServicesController>();
 builder.Services.AddSingleton<IConfigurationController, ConfigurationController>();
+builder.Services.AddSingleton<ILogController, LogController>();
 builder.Services.AddRazorPages();
 builder.Services.AddOptions();
 builder.Services.Configure<IISConfig>(builder.Configuration.GetSection("IIS_config"));

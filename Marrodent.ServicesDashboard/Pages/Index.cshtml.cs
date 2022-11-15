@@ -88,6 +88,11 @@ public sealed class IndexModel : PageModel
         }
     }
 
+    private void Log(ServiceApp app)
+    {
+        
+    }
+
     private async Task GetState()
     {
         await _webServiceController.Refresh();
