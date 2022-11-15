@@ -22,9 +22,11 @@ namespace Marrodent.ServicesDashboard.Controllers
         //Public
         public void Refresh()
         {
+            _processes = new Dictionary<string, ICollection<string>>();
+            
             foreach (var terminal in _config.Terminals)
             {
-                _processes.Add(terminal, Process.GetProcesses("10.48.86.235").Select(x => x.ProcessName).ToList());
+                _processes.Add(terminal, Process.GetProcesses(terminal).Select(x => x.ProcessName).ToList());
             }
         }
 
