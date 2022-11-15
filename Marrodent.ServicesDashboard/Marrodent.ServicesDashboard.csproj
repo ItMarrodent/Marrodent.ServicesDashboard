@@ -9,6 +9,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="RestSharp" Version="108.0.2" />
       <PackageReference Include="System.DirectoryServices" Version="6.0.0" />
     </ItemGroup>
 

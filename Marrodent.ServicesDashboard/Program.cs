@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IConfigurationController, ConfigurationController>();
+builder.Services.AddSingleton<iIISControler, IISControler>();
 
 var app = builder.Build();
 
