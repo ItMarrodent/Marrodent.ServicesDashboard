@@ -1,4 +1,5 @@
-﻿using Marrodent.ServicesDashboard.Interfaces;
+﻿using Marrodent.ServicesDashboard.Controllers;
+using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
 using Marrodent.ServicesDashboard.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
@@ -14,12 +15,14 @@ public sealed class IndexModel : PageModel
     //Private
     private readonly ILogger<IndexModel> _logger;
     private readonly IConfigurationController _configurationController;
+    private readonly IServiceController _iisController;
 
     //CTOR
-    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController)
+    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController, IServiceController iisController)
     {
         _logger = logger;
         _configurationController = configurationController;
+        _iisController = iisController;
     }
 
     //Public

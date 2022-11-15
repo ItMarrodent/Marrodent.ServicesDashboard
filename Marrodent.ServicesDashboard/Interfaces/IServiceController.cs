@@ -2,7 +2,7 @@
 
 namespace Marrodent.ServicesDashboard.Interfaces;
 
-public interface iIISControler
+public interface IServiceController
 {
     ServiceState GetState(string websiteName);
 }

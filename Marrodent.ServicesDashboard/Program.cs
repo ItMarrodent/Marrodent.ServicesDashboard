@@ -1,11 +1,14 @@
 using Marrodent.ServicesDashboard.Controllers;
 using Marrodent.ServicesDashboard.Interfaces;
+using Marrodent.ServicesDashboard.Models.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IServiceController, IISController>();
 builder.Services.AddSingleton<IConfigurationController, ConfigurationController>();
-builder.Services.AddSingleton<iIISControler, IISControler>();
+builder.Services.AddRazorPages();
+builder.Services.AddOptions();
+builder.Services.Configure<IISConfig>(builder.Configuration.GetSection("IIS_config"));
 
 var app = builder.Build();
 
