@@ -77,7 +77,7 @@ public sealed class IndexModel : PageModel
             app.State = app.Type switch
             {
                 ServiceType.IIS => await _webServiceController.GetState(app.ServiceName),
-                ServiceType.WindowsService => _serviceController.GetState(app.ServiceName),
+                ServiceType.WindowsService => _serviceController.GetState(app.ServiceName, app.Address),
                 _ => app.State
             };
         }
