@@ -35,7 +35,8 @@ public sealed class IndexModel : PageModel
     
     public IActionResult OnPostAction(int id, ActionType type)
     {
-        ServiceApp? app = Apps?.FirstOrDefault();
+        Apps ??= _configurationController.GetAll();
+        ServiceApp? app = Apps?.FirstOrDefault(x=>x.Id == id);
         
         if(app == null) return RedirectToPage("index");
 
@@ -64,16 +65,25 @@ public sealed class IndexModel : PageModel
         switch (app.Type)
         {
             case ServiceType.IIS:
-                _webServiceController.Stop(app.ServiceName);
+                _webServiceController.Start(app.ServiceName);
                 break;
             case ServiceType.WindowsService:
-                _serviceController.Stop(app.ServiceName, app.Address);
+                _serviceController.Start(app.WindowsServiceName, app.Address);
                 break;
         }
     }
 
     private void Stop(ServiceApp app)
     {
+        switch (app.Type)
+        {
+            case ServiceType.IIS:
+                _webServiceController.Stop(app.ServiceName);
+                break;
+            case ServiceType.WindowsService:
+                _serviceController.Stop(app.WindowsServiceName, app.Address);
+                break;
+        }
     }
 
     private async Task GetState()

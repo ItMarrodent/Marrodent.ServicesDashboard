@@ -47,6 +47,11 @@ public sealed class IISController : IWebServiceController
         };
     }
 
+    public Task Start(string websiteName)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task Stop(string websiteName)
     {
         throw new NotImplementedException();

@@ -30,9 +30,14 @@ namespace Marrodent.ServicesDashboard.Controllers
             }
         }
 
-        public void Stop(string websiteName, string address)
+        public void Start(string service, string address)
         {
-            throw new NotImplementedException();
+            Process.Start("CMD.exe", $"/C sc \\\\{address} start \"{service}\"");
+        }
+
+        public void Stop(string service, string address)
+        {
+            Process.Start("CMD.exe", $"/C sc \\\\{address} stop \"{service}\"");
         }
 
         public ServiceState GetState(string service, string address) => _processes[address].Contains(service) ? ServiceState.Running : ServiceState.Stopped;

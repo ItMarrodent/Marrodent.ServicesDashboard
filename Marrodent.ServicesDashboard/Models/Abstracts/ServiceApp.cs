@@ -11,6 +11,7 @@ public abstract class ServiceApp : IIdentity
 
     //Public - string
     public string? ServiceName { get; set; }
+    public string? WindowsServiceName { get; set; }
     public string? DisplayName { get; set; }
     public string? Address { get; set; }
     public string? CorrectLogAddress { get; set; }
