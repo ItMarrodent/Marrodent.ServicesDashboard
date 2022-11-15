@@ -67,6 +67,8 @@ public sealed class IndexModel : PageModel
 
     private async Task GetState()
     {
+        await _iisController.Refresh();
+        
         foreach (ServiceApp app in Apps)
         {
             if (app.Type == ServiceType.IIS)

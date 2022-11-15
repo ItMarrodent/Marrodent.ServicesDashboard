@@ -14,7 +14,8 @@ public sealed class IISController : IServiceController
     //Private
     private readonly IISConfig _config;
     private readonly RestClient _client;
-    
+    private ICollection<IISWebsite> _websites;
+
     //CTOR
     public IISController(IOptions<IISConfig> options)
     {
@@ -27,23 +28,23 @@ public sealed class IISController : IServiceController
     }
     
     //Public
-    public async Task<ServiceState> GetState(string websiteName)
+    public async Task Refresh()
     {
         var request = new RestRequest("api/webserver/websites");
         request.AddHeader("Access-Token", $"Bearer {_config.Token}");
-
         var response  = await _client.ExecuteAsync(request);
-        var websites = JsonConvert.DeserializeObject<IISWebsites>(response.Content);
-        var website = websites.websites.FirstOrDefault(x => x.name == websiteName);
+        _websites = JsonConvert.DeserializeObject<IISWebsites>(response.Content).websites;
+    }
+    
+    public async Task<ServiceState> GetState(string websiteName)
+    {
+        var website = _websites.FirstOrDefault(x => x.name == websiteName);
 
-        switch (website.status)
+        return website.status switch
         {
-            case "started":
-                return ServiceState.Running;
-            case "stopped":
-                return ServiceState.Stopped;
-            default:
-                return ServiceState.Unknown;
-        }
+            "started" => ServiceState.Running,
+            "stopped" => ServiceState.Stopped,
+            _ => ServiceState.Unknown
+        };
     }
 }
