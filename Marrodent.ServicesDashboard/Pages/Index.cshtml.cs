@@ -75,6 +75,8 @@ public sealed class IndexModel : PageModel
             case ServiceType.WindowsService:
                 _serviceController.Start(app.WindowsServiceName, app.Address);
                 break;
+            default:
+                break;
         }
     }
 
@@ -88,6 +90,8 @@ public sealed class IndexModel : PageModel
                 break;
             case ServiceType.WindowsService:
                 _serviceController.Stop(app.WindowsServiceName, app.Address);
+                break;
+            default:
                 break;
         }
     }
