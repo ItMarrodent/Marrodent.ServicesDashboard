@@ -25,14 +25,13 @@ public sealed class IISController : IServiceController
             Authenticator = new NtlmAuthenticator(new NetworkCredential(_config.Login, _config.Password, _config.Domain)),
             RemoteCertificateValidationCallback = (sender, certificate, chain, errors) => true
         };
+        _client.AddDefaultHeader("Access-Token", $"Bearer {_config.Token}");
     }
     
     //Public
     public async Task Refresh()
     {
-        var request = new RestRequest("api/webserver/websites");
-        request.AddHeader("Access-Token", $"Bearer {_config.Token}");
-        var response  = await _client.ExecuteAsync(request);
+        var response  = await _client.ExecuteAsync( new RestRequest("api/webserver/websites"));
         _websites = JsonConvert.DeserializeObject<IISWebsites>(response.Content).websites;
     }
     
