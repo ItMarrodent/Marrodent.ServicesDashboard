@@ -39,9 +39,9 @@ public sealed class LogController : ILogController
 
     private ICollection<string> GetTodayFiles(ServiceApp serviceApp, string path)
     {
-        if(!Directory.Exists($@"\\{serviceApp.Address}\{path.Replace(@"C:\", string.Empty)}")) return new List<string>();
+        if(!Directory.Exists($@"\\{serviceApp.Address}\{path.Replace(@"C:\", @"C$\")}")) return new List<string>();
         
-        return Directory.GetFiles($@"\\{serviceApp.Address}\{path.Replace(@"C:\", string.Empty)}")
+        return Directory.GetFiles($@"\\{serviceApp.Address}\{path.Replace(@"C:\", @"C$\")}")
             .Select(x=> new FileInfo(x))
             .Where(x=>x.CreationTime >= DateTime.Today)
             .Select(x=>x.FullName)
