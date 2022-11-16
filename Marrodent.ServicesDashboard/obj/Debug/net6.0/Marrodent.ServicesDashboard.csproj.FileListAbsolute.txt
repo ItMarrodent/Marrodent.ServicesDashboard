@@ -62,7 +62,6 @@ C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.Serv
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\System.Windows.Extensions.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.DirectoryServices.dll
-C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\unix\lib\netstandard1.5\System.ServiceProcess.ServiceController.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\netstandard1.5\System.ServiceProcess.ServiceController.dll
@@ -87,3 +86,8 @@ C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.Serv
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\Marrodent.ServicesDashboard.genruntimeconfig.cache
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\ref\Marrodent.ServicesDashboard.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\RestSharp.dll
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll

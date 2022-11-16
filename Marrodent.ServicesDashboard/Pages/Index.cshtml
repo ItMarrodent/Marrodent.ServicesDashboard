@@ -4,219 +4,243 @@
 
 <div>
 <div class="row col-12">
-    @if (Model.Apps != null && Model.Apps.Any(x=>x.Type == ServiceType.IIS))
-    {
-        <div class="col-4">
-            <p class="display-4">
-                IIS services
-            </p>
-            <div>
-                @foreach (var app in Model.Apps.Where(x=>x.Type == ServiceType.IIS))
-                {
-                    <div class="card" style="background: @app.CardColor; color: white;">
-                        <div class="card-body">
-                            <h2 class="card-title">@app.DisplayName</h2>
-                            <br/>
-                            <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Address:</b>@app.Address</p>
-                            <p class="card-text"><b>State:</b> @app.State</p>
-                            <p class="card-text"><b>Errors:</b> @app.Errors</p>
 
-                            @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
-                            {
-                                case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
-                                    <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
-                                    break;
-                                case false:
-                                    <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
-                                    break;
-                            }
-
-                            @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
-                            {
-                                <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
-                            }
-                                
-                            <div class="row">
-                                @if (app.State == ServiceState.Stopped)
-                                {
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Start</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Start" />
-                                        </form>
-                                    </div>
-                                }
-                                @if (app.State == ServiceState.Running)
-                                {
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Reset</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Restart" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Stop</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Stop" />
-                                        </form>
-                                    </div>
-                                }
-                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                                {
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Get logs</button>
-                                            <input type="hidden" name="id" value="@app.Id"/>
-                                            <input type="hidden" name="type" value="@ActionType.Log"/>
-                                        </form>
-                                    </div>
-                                }
-                            </div>
-                        </div>
+@if (Model.Terminals != null && Model.Terminals.Any())
+{
+     <div class="col-3">
+        <p class="display-4">
+            Terminals
+        </p>
+        <div>
+            @foreach (var terminal in Model.Terminals)
+            {
+                <div class="card" style="background: #413839; color: white;">
+                    <div class="card-body">
+                        <h2 class="card-title">@terminal.Address</h2>
+                        <br/>
+                        <p class="card-text"><b>Total ram:</b> @terminal.TotalRam</p>
+                        <p class="card-text"><b>Available ram:</b> @terminal.AvailableRam</p>
                     </div>
-                    <br/>
-                }
-            </div>
+                </div>
+                <br/>
+            }
         </div>
-    }
-       
-    @if (Model.Apps != null && Model.Apps.Any(x=>x.Type == ServiceType.WindowsService))
-    {
-        <div class="col-4">
-            <p class="display-4">
-                Windows services
-            </p>
-            <div>
-                @foreach (var app in Model.Apps.Where(x=>x.Type == ServiceType.WindowsService))
-                {
-                    <div class="card" style="background: @app.CardColor; color: white;">
-                        <div class="card-body">
-                            <h2 class="card-title">@app.DisplayName</h2>
-                            <br/>
-                            <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Address:</b>@app.Address</p>
-                            <p class="card-text"><b>State:</b> @app.State</p>
-                            <p class="card-text"><b>Errors:</b> @app.Errors</p>
+    </div>
+}
 
-                           @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
-                           {
-                               case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
-                                   <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
-                                   break;
-                               case false:
-                                   <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
-                                   break;
-                           }
-                                
-                            @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+@if (Model.Apps != null && Model.Apps.Any(x => x.Type == ServiceType.IIS))
+{
+    <div class="col-3">
+        <p class="display-4">
+            IIS services
+        </p>
+        <div>
+            @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.IIS))
+            {
+                <div class="card" style="background: @app.CardColor; color: white;">
+                    <div class="card-body">
+                        <h2 class="card-title">@app.DisplayName</h2>
+                        <br/>
+                        <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
+                        <p class="card-text"><b>Description:</b> @app.Description</p>
+                        <p class="card-text"><b>Address:</b>@app.Address</p>
+                        <p class="card-text"><b>State:</b> @app.State</p>
+                        <p class="card-text"><b>Errors:</b> @app.Errors</p>
+
+                        @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
+                        {
+                            case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
+                                <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
+                                break;
+                            case false:
+                                <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
+                                break;
+                        }
+
+                        @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                        {
+                            <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
+                        }
+
+                        <div class="row">
+                            @if (app.State == ServiceState.Stopped)
                             {
-                                <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Start</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Start"/>
+                                    </form>
+                                </div>
                             }
-                                
-                            <div class="row">
-                                @if (app.State == ServiceState.Stopped)
-                                {
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Start</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Start" />
-                                        </form>
-                                    </div>
-                                }
-                                @if (app.State == ServiceState.Running)
-                                {
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Reset</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Restart" />
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Stop</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Stop" />
-                                        </form>
-                                    </div>
-                                }
-                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                                {
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Get logs</button>
-                                            <input type="hidden" name="id" value="@app.Id" />
-                                            <input type="hidden" name="type" value="@ActionType.Log" />
-                                        </form>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-                }
-            </div>
-        </div>
-    }
-        
-    @if (Model.Apps != null && Model.Apps.Any(x=>x.Type == ServiceType.WindowsTaskScheduler))
-    {
-        <div class="col-4">
-            <p class="display-4">
-                Task scheduler
-            </p>
-            <div>
-                @foreach (var app in Model.Apps.Where(x=>x.Type == ServiceType.WindowsTaskScheduler))
-                {
-                    <div class="card" style="background: @app.CardColor; color: white;">
-                        <div class="card-body">
-                            <h2 class="card-title">@app.DisplayName</h2>
-                            <br/>
-                            <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                            <p class="card-text"><b>Description:</b> @app.Description</p>
-                            <p class="card-text"><b>Address:</b>@app.Address</p>
-                            <p class="card-text"><b>Errors:</b> @app.Errors</p>
-                                
-                           @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
-                           {
-                               case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
-                                   <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
-                                   break;
-                               case false:
-                                   <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
-                                   break;
-                           }
-                                                                
-                            @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                            @if (app.State == ServiceState.Running)
                             {
-                                <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Reset</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Restart"/>
+                                    </form>
+                                </div>
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Stop</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Stop"/>
+                                    </form>
+                                </div>
                             }
-                                
                             @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                             {
-                                <div class="row">
-                                    <div class="col-4">
-                                        <form asp-page-handler="Action" method="post">
-                                            <button class="btn btn-dark col-12">Get logs</button>
-                                            <input type="hidden" name="id" value="@app.Id"/>
-                                            <input type="hidden" name="type" value="@ActionType.Log"/>
-                                        </form>
-                                    </div>
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Get logs</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Log"/>
+                                    </form>
                                 </div>
                             }
                         </div>
                     </div>
-                    <br/>
-                }
-            </div>
+                </div>
+                <br/>
+            }
         </div>
-    }
+    </div>
+}
+
+@if (Model.Apps != null && Model.Apps.Any(x => x.Type == ServiceType.WindowsService))
+{
+    <div class="col-3">
+        <p class="display-4">
+            Windows services
+        </p>
+        <div>
+            @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsService))
+            {
+                <div class="card" style="background: @app.CardColor; color: white;">
+                    <div class="card-body">
+                        <h2 class="card-title">@app.DisplayName</h2>
+                        <br/>
+                        <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
+                        <p class="card-text"><b>Description:</b> @app.Description</p>
+                        <p class="card-text"><b>Address:</b>@app.Address</p>
+                        <p class="card-text"><b>State:</b> @app.State</p>
+                        <p class="card-text"><b>Errors:</b> @app.Errors</p>
+
+                        @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
+                        {
+                            case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
+                                <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
+                                break;
+                            case false:
+                                <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
+                                break;
+                        }
+
+                        @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                        {
+                            <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
+                        }
+
+                        <div class="row">
+                            @if (app.State == ServiceState.Stopped)
+                            {
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Start</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Start"/>
+                                    </form>
+                                </div>
+                            }
+                            @if (app.State == ServiceState.Running)
+                            {
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Reset</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Restart"/>
+                                    </form>
+                                </div>
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Stop</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Stop"/>
+                                    </form>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
+                            {
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Get logs</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Log"/>
+                                    </form>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            }
+        </div>
+    </div>
+}
+
+@if (Model.Apps != null && Model.Apps.Any(x => x.Type == ServiceType.WindowsTaskScheduler))
+{
+    <div class="col-3">
+        <p class="display-4">
+            Task scheduler
+        </p>
+        <div>
+            @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsTaskScheduler))
+            {
+                <div class="card" style="background: @app.CardColor; color: white;">
+                    <div class="card-body">
+                        <h2 class="card-title">@app.DisplayName</h2>
+                        <br/>
+                        <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
+                        <p class="card-text"><b>Description:</b> @app.Description</p>
+                        <p class="card-text"><b>Address:</b>@app.Address</p>
+                        <p class="card-text"><b>Errors:</b> @app.Errors</p>
+
+                        @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
+                        {
+                            case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
+                                <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
+                                break;
+                            case false:
+                                <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
+                                break;
+                        }
+
+                        @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                        {
+                            <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
+                        }
+
+                        @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
+                        {
+                            <div class="row">
+                                <div class="col-4">
+                                    <form asp-page-handler="Action" method="post">
+                                        <button class="btn btn-dark col-12">Get logs</button>
+                                        <input type="hidden" name="id" value="@app.Id"/>
+                                        <input type="hidden" name="type" value="@ActionType.Log"/>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <br/>
+            }
+        </div>
+    </div>
+}
 </div>
 </div>

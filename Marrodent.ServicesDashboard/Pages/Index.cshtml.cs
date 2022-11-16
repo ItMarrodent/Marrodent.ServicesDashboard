@@ -1,6 +1,8 @@
-﻿using Marrodent.ServicesDashboard.Interfaces;
+﻿using System.Diagnostics;
+using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
 using Marrodent.ServicesDashboard.Models.Enum;
+using Marrodent.ServicesDashboard.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,7 +12,8 @@ public sealed class IndexModel : PageModel
 {
     //Public
     public ICollection<ServiceApp>? Apps { get; set; }
-    
+    public ICollection<Terminal>? Terminals { get; set; }
+
     //Private
     private readonly ILogger<IndexModel> _logger;
     private readonly IConfigurationController _configurationController;
@@ -32,6 +35,7 @@ public sealed class IndexModel : PageModel
     public async Task OnGet()
     {
         Apps = _configurationController.GetAll();
+        Terminals = _configurationController.GetTerminals();
         await GetState();
     }
     
@@ -124,6 +128,12 @@ public sealed class IndexModel : PageModel
             {
                 app.Errors = "No";
             }
+        }
+
+        foreach (Terminal terminal in Terminals)
+        {
+            PerformanceCounter ramCounter = new PerformanceCounter("Memory", "Available MBytes", String.Empty, terminal.Address);
+            terminal.AvailableRam = $"{ramCounter.NextValue()} MB";
         }
     }
 }

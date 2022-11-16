@@ -3,4 +3,5 @@
 public sealed class TerminalConfig
 {
     public string[] Terminals { get; set; }
+    public double[] Ram { get; set; }
 }

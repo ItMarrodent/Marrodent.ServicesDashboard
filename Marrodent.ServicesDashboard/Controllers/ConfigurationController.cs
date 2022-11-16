@@ -3,6 +3,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
+using Microsoft.Extensions.Options;
 
 namespace Marrodent.ServicesDashboard.Controllers
 {
@@ -10,11 +11,13 @@ namespace Marrodent.ServicesDashboard.Controllers
     {
         //Private
         private readonly string _basePath;
+        private readonly TerminalConfig _terminalConfig;
 
         //CTOR
-        public ConfigurationController()
+        public ConfigurationController(IOptions<TerminalConfig> options)
         {
             _basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
+            _terminalConfig = options.Value;
         }
 
         //Public
@@ -48,6 +51,14 @@ namespace Marrodent.ServicesDashboard.Controllers
             return !File.Exists($@"{_basePath}\tasks.json") 
                 ? null
                 : JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\tasks.json"));
+        }
+
+        public ICollection<Terminal> GetTerminals()
+        {
+            return _terminalConfig.Terminals.Select(x => new Terminal
+            {
+                Address = x
+            }).ToList();
         }
     }
 }
