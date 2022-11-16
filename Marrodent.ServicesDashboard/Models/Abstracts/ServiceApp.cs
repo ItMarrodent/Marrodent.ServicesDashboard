@@ -18,6 +18,8 @@ public abstract class ServiceApp : IIdentity
     public string? ErrorLogAddress { get; set; }
     public string? Description { get; set; }
 
+    [JsonIgnore] public string Errors { get; set; } = "No error log folder";
+
     [JsonIgnore]
     public string CardColor
     {
@@ -27,7 +29,7 @@ public abstract class ServiceApp : IIdentity
             {
                 case ServiceState.Running:
                     return "#449e48";
-                case ServiceState.Stopped: 
+                case ServiceState.Stopped:
                     return "#990000";
                 case ServiceState.Disabled:
                 case ServiceState.Unknown:
@@ -46,29 +48,5 @@ public abstract class ServiceApp : IIdentity
     protected ServiceApp(ServiceType type)
     {
         Type = type;
-    }
-
-    //Public - functions
-    public virtual ICollection<string> GetCorrectLogs(DateTime date) => GetLogsBase(date, CorrectLogAddress);
-    public virtual ICollection<string> GetErrorLogs(DateTime date) => GetLogsBase(date, ErrorLogAddress);
-
-    public virtual void Start()
-    {
-        
-    }
-
-    public virtual void Stop()
-    {
-        
-    }
-
-    //Private - functions
-    private ICollection<string> GetLogsBase(DateTime date, string path)
-    {
-        return Directory.GetFiles(path)
-            .Select(x => new FileInfo(x))
-            .Where(x => x.CreationTime >= date)
-            .SelectMany(x => File.ReadAllLines(x.FullName))
-            .ToList();
     }
 }

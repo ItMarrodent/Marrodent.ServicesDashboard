@@ -22,6 +22,10 @@ public sealed class LogController : ILogController
             SaveFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress), "Error");
         }
     }
+    public bool HasErrorsToday(ServiceApp serviceApp)
+    {
+        return !string.IsNullOrEmpty(serviceApp.ErrorLogAddress) && GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress).Any();
+    }
     
     //Private
     private void SaveFiles(string app, ICollection<string> files, string type)
@@ -35,7 +39,9 @@ public sealed class LogController : ILogController
 
     private ICollection<string> GetTodayFiles(ServiceApp serviceApp, string path)
     {
-       return Directory.GetFiles($@"\\{serviceApp.Address}\{path.Replace(@"C:\", string.Empty)}")
+        if(!Directory.Exists($@"\\{serviceApp.Address}\{path.Replace(@"C:\", string.Empty)}")) return new List<string>();
+
+        return Directory.GetFiles($@"\\{serviceApp.Address}\{path.Replace(@"C:\", string.Empty)}")
             .Select(x=> new FileInfo(x))
             .Where(x=>x.CreationTime >= DateTime.Today)
             .Select(x=>x.FullName)
