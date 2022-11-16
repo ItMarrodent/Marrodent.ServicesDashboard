@@ -6,4 +6,5 @@ public sealed class Terminal
     public double TotalRam { get; set; }
     public double AvailableRam { get; set; }
     public string UsedRam => $"{Math.Round((TotalRam - AvailableRam)/TotalRam * 100, 2)} %";
+    public string Color => AvailableRam > 1000 ? "#413839" : "#990000";
 }

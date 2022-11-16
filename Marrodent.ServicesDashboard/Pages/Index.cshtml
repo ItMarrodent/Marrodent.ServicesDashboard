@@ -14,7 +14,7 @@
         <div>
             @foreach (var terminal in Model.Terminals)
             {
-                <div class="card" style="background: #413839; color: white;">
+                <div class="card" style="background: @terminal.Color; color: white;">
                     <div class="card-body">
                         <h2 class="card-title">@terminal.Address</h2>
                         <br/>
