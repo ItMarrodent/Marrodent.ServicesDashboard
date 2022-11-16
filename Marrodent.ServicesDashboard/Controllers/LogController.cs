@@ -1,4 +1,5 @@
-﻿using Marrodent.ServicesDashboard.Interfaces;
+﻿using System.Text;
+using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
 
 namespace Marrodent.ServicesDashboard.Controllers;
@@ -24,9 +25,29 @@ public sealed class LogController : ILogController
     }
     public bool HasErrorsToday(ServiceApp serviceApp)
     {
-        return !string.IsNullOrEmpty(serviceApp.ErrorLogAddress) && GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress).Any();
+        if (!string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
+        {
+            return GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress).Any();
+        }
+        if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress))
+        {
+            ICollection<string> files = GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress);
+
+            if (!files.Any()) return false;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var file in files)
+            {
+                sb.Append(File.ReadAllText(file));
+            }
+
+            return CheckErrorWords(sb.ToString().ToLower());
+        }
+
+        return false;
     }
-    
+
     //Private
     private void SaveFiles(string app, ICollection<string> files, string type)
     {
@@ -46,5 +67,10 @@ public sealed class LogController : ILogController
             .Where(x=>x.CreationTime >= DateTime.Today)
             .Select(x=>x.FullName)
             .ToList();
+    }
+    
+    private bool CheckErrorWords(string arg)
+    {
+        return arg.Contains("error") || arg.Contains("problem") || arg.Contains("exception") || arg.Contains("warning") || arg.Contains("błąd");
     }
 }
