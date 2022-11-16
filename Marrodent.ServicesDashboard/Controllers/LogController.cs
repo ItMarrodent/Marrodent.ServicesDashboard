@@ -61,7 +61,7 @@ public sealed class LogController : ILogController
         foreach (string file in files)
         {
             FileInfo info = new FileInfo(file);
-            string path = $@"{KnownFolders.GetPath(KnownFolder.Downloads)}\{type}_{app}_{info.Name}";
+            string path = $@"{Path.GetTempPath()}{type}_{app}_{info.Name}";
             File.WriteAllText(path, File.ReadAllText(file));
             result.Add(path);
         }

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO.Compression;
 using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
 using Marrodent.ServicesDashboard.Models.Enum;
@@ -70,7 +71,22 @@ public sealed class IndexModel : PageModel
     {
         Apps ??= _configurationController.GetAll();
         ServiceApp? app = Apps?.FirstOrDefault(x=>x.Id == id);
-        
+        var files = _logController.GetLogs(app);
+        var zipName = $"{app.ServiceName}-{DateTime.Now:yyyy_MM_dd-HH_mm_ss}.zip";
+
+        using MemoryStream ms = new MemoryStream();
+
+        using (var zip = new ZipArchive(ms, ZipArchiveMode.Create, true))
+        {
+            foreach (var file in files.Select(x=> new FileInfo(x)))
+            {
+                var entry = zip.CreateEntry(file.Name);
+                using var fileStream = new MemoryStream(System.IO.File.ReadAllBytes(file.FullName));
+                using var entryStream = entry.Open();
+                fileStream.CopyTo(entryStream);
+            }
+        } 
+        return File( ms.ToArray(), "application/zip", zipName);
     }
 
     //Private
@@ -104,11 +120,6 @@ public sealed class IndexModel : PageModel
             default:
                 break;
         }
-    }
-
-    private List<FileResult> Log(ServiceApp app)
-    {
-        return _logController.GetLogs(app);
     }
 
     private async Task GetState()
