@@ -55,10 +55,12 @@ namespace Marrodent.ServicesDashboard.Controllers
 
         public ICollection<Terminal> GetTerminals()
         {
-            return _terminalConfig.Terminals.Select(x => new Terminal
-            {
-                Address = x
-            }).ToList();
+            return _terminalConfig.Terminals.Select((value, index) => new { value, index })
+                .Select(terminal => new Terminal
+                {
+                    Address = terminal.value,
+                    TotalRam = _terminalConfig.Ram[terminal.index]
+                }).ToList();
         }
     }
 }

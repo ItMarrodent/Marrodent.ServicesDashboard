@@ -133,7 +133,7 @@ public sealed class IndexModel : PageModel
         foreach (Terminal terminal in Terminals)
         {
             PerformanceCounter ramCounter = new PerformanceCounter("Memory", "Available MBytes", String.Empty, terminal.Address);
-            terminal.AvailableRam = $"{ramCounter.NextValue()} MB";
+            terminal.AvailableRam = Convert.ToDouble(ramCounter.NextValue());
         }
     }
 }
