@@ -25,6 +25,11 @@ public abstract class ServiceApp : IIdentity
     {
         get
         {
+            if (Errors == "Yes")
+            {
+                return "#dbbe02";
+            }
+            
             switch (State)
             {
                 case ServiceState.Running:

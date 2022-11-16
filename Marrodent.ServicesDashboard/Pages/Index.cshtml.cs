@@ -31,7 +31,7 @@ public sealed class IndexModel : PageModel
     //Public
     public async Task OnGet()
     {
-        Apps = _configurationController.GetAll(); 
+        Apps = _configurationController.GetAll();
         await GetState();
     }
     
@@ -115,6 +115,15 @@ public sealed class IndexModel : PageModel
                 ServiceType.WindowsService => _serviceController.GetState(app.ServiceName, app.Address),
                 _ => app.State
             };
+            
+            if (_logController.HasErrorsToday(app))
+            {
+                app.Errors = "Yes";
+            }
+            else if(!string.IsNullOrEmpty(app.ErrorLogAddress))
+            {
+                app.Errors = "No";
+            }
         }
     }
 }
