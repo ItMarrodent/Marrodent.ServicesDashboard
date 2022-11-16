@@ -59,13 +59,18 @@ public sealed class IndexModel : PageModel
                 Stop(app);
                 break;
             case ActionType.Log:
-                Log(app);
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
         
         return RedirectToPage("index");
+    }
+
+    public FileResult OnPostDownloadFile(int id, ActionType type)
+    {
+        Apps ??= _configurationController.GetAll();
+        ServiceApp? app = Apps?.FirstOrDefault(x=>x.Id == id);
+        
     }
 
     //Private
@@ -101,9 +106,9 @@ public sealed class IndexModel : PageModel
         }
     }
 
-    private void Log(ServiceApp app)
+    private List<FileResult> Log(ServiceApp app)
     {
-        _logController.GetLogs(app);
+        return _logController.GetLogs(app);
     }
 
     private async Task GetState()

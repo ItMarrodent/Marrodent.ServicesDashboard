@@ -1,28 +1,33 @@
 ﻿using System.Text;
 using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Marrodent.ServicesDashboard.Controllers;
 
 public sealed class LogController : ILogController
 {
     //Public
-    public void GetLogs(ServiceApp serviceApp)
+    public ICollection<string> GetLogs(ServiceApp serviceApp)
     {
         if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress) && !string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
         {
-            SaveFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Correct");
+            return GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Correct");
         }
-        else if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress))
+        
+        if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress))
         {
-            SaveFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Log");
+            return GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Log");
         }
         
         if (!string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
         {
-            SaveFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress), "Error");
+            return GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress), "Error");
         }
+
+        return new List<string>();
     }
+    
     public bool HasErrorsToday(ServiceApp serviceApp)
     {
         if (!string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
@@ -49,13 +54,19 @@ public sealed class LogController : ILogController
     }
 
     //Private
-    private void SaveFiles(string app, ICollection<string> files, string type)
+    private ICollection<string> GetFiles(string app, ICollection<string> files, string type)
     {
+        ICollection<string> result = new List<string>();
+        
         foreach (string file in files)
         {
             FileInfo info = new FileInfo(file);
-            File.WriteAllText($@"{KnownFolders.GetPath(KnownFolder.Downloads)}\{type}_{app}_{info.Name}", File.ReadAllText(file));
+            string path = $@"{KnownFolders.GetPath(KnownFolder.Downloads)}\{type}_{app}_{info.Name}";
+            File.WriteAllText(path, File.ReadAllText(file));
+            result.Add(path);
         }
+
+        return result;
     }
 
     private ICollection<string> GetTodayFiles(ServiceApp serviceApp, string path)

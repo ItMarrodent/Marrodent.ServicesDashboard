@@ -94,7 +94,7 @@
                             @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                             {
                                 <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
+                                    <form asp-page-handler="DownloadFile" method="post">
                                         <button class="btn btn-dark col-12">Get logs</button>
                                         <input type="hidden" name="id" value="@app.Id"/>
                                         <input type="hidden" name="type" value="@ActionType.Log"/>
@@ -175,7 +175,7 @@
                             @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
                             {
                                 <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
+                                    <form asp-page-handler="DownloadFile" method="post">
                                         <button class="btn btn-dark col-12">Get logs</button>
                                         <input type="hidden" name="id" value="@app.Id"/>
                                         <input type="hidden" name="type" value="@ActionType.Log"/>
@@ -228,7 +228,7 @@
                         {
                             <div class="row">
                                 <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
+                                    <form asp-page-handler="DownloadFile" method="post">
                                         <button class="btn btn-dark col-12">Get logs</button>
                                         <input type="hidden" name="id" value="@app.Id"/>
                                         <input type="hidden" name="type" value="@ActionType.Log"/>
