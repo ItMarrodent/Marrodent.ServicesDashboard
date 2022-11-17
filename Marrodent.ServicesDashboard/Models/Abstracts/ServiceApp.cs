@@ -39,7 +39,7 @@ public abstract class ServiceApp : IIdentity
                 case ServiceState.Disabled:
                 case ServiceState.Unknown:
                 default:
-                    return "#413839";
+                    return "#7d7d7d";
             }
         }
     }
