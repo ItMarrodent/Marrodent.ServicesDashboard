@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Abstracts;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Marrodent.ServicesDashboard.Controllers;
 
@@ -10,22 +9,29 @@ public sealed class LogController : ILogController
     //Public
     public ICollection<string> GetLogs(ServiceApp serviceApp)
     {
+        List<string> result = new List<string>();
+
         if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress) && !string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
         {
-            return GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Correct");
-        }
-        
-        if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress))
-        {
-            return GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Log");
-        }
-        
-        if (!string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
-        {
-            return GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress), "Error");
+            ICollection<string> temp = GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Correct");
+            if (temp.Any()) result.AddRange(temp);
+            temp = GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress), "Error");
+            if (temp.Any()) result.AddRange(temp);
         }
 
-        return new List<string>();
+        else if (!string.IsNullOrEmpty(serviceApp.CorrectLogAddress))
+        {
+            ICollection<string> temp = GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.CorrectLogAddress), "Log");
+            if (temp.Any()) result.AddRange(temp);
+        }
+
+        else if (!string.IsNullOrEmpty(serviceApp.ErrorLogAddress))
+        {
+            ICollection<string> temp = GetFiles(serviceApp.ServiceName, GetTodayFiles(serviceApp, serviceApp.ErrorLogAddress), "Error");
+            if (temp.Any()) result.AddRange(temp);
+        }
+
+        return result;
     }
     
     public bool HasErrorsToday(ServiceApp serviceApp)
@@ -72,10 +78,10 @@ public sealed class LogController : ILogController
     private ICollection<string> GetTodayFiles(ServiceApp serviceApp, string path)
     {
         if(!Directory.Exists($@"\\{serviceApp.Address}\{path.Replace(@"C:\", @"C$\")}")) return new List<string>();
-        
+
         return Directory.GetFiles($@"\\{serviceApp.Address}\{path.Replace(@"C:\", @"C$\")}")
             .Select(x=> new FileInfo(x))
-            .Where(x=>x.CreationTime >= DateTime.Today)
+            .Where(x=>x.LastWriteTime.Date >= DateTime.Today)
             .Select(x=>x.FullName)
             .ToList();
     }

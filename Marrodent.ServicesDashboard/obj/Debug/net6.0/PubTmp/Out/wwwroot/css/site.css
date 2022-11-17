@@ -1,18 +1,11 @@
-html {
-  font-size: 14px;
+.btn-sm {
+    font-size: 10px !important;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.card-header .fa {
+    transition: .3s transform ease-in-out;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+.card-header .collapsed .fa {
+    transform: rotate(90deg);
 }
