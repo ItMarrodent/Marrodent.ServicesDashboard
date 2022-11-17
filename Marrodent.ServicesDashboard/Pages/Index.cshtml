@@ -7,8 +7,8 @@
 
 @if (Model.Terminals != null && Model.Terminals.Any())
 {
-     <div class="col-1">
-        <p class="display-4">
+     <div class="col-2">
+        <p class="display-6">
             Terminals
         </p>
         <div>
@@ -16,11 +16,10 @@
             {
                 <div class="card" style="background: @terminal.Color; color: white;">
                     <div class="card-body">
-                        <h2 class="card-title">@terminal.Address</h2>
-                        <br/>
-                        <p class="card-text"><b>Total ram (MB):</b> @terminal.TotalRam</p>
-                        <p class="card-text"><b>Available ram (MB):</b> @terminal.AvailableRam</p>
-                        <p class="card-text"><b>Used ram:</b> @terminal.UsedRam</p>
+                        <h4 class="card-title">@terminal.Address</h4>
+                        <div class="card-text"><b>Total ram (MB):</b> @terminal.TotalRam</div>
+                        <div class="card-text"><b>Available ram (MB):</b> @terminal.AvailableRam</div>
+                        <div class="card-text"><b>Used ram:</b> @terminal.UsedRam</div>
                     </div>
                 </div>
                 <br/>
@@ -32,75 +31,84 @@
 @if (Model.Apps != null && Model.Apps.Any(x => x.Type == ServiceType.IIS))
 {
     <div class="col">
-        <p class="display-4">
-            IIS services
+        <p class="display-6">
+                    IIS services
         </p>
         <div>
             @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.IIS))
             {
-                <div class="card" style="background: @app.CardColor; color: white;">
-                    <div class="card-body">
-                        <h2 class="card-title">@app.DisplayName</h2>
-                        <br/>
-                        <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                        <p class="card-text"><b>Description:</b> @app.Description</p>
-                        <p class="card-text"><b>Address:</b>@app.Address</p>
-                        <p class="card-text"><b>State:</b> @app.State</p>
-                        <p class="card-text"><b>Errors:</b> @app.Errors</p>
+                <div class="accordion" id="1">
+                            <div class="accordion-item" style="background: @app.CardColor; color: white;">
+                        <h2 class="accordion-header" id="h-@app.Id">
+                            <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
+                                <h4 class="card-title">@app.DisplayName</h4>
+                            </button>
+                        </h2>
+                        <div id="c-@app.Id" class="accordion-collapse collapse" aria-labelledby="h-1">
+                                    <div id="collapse-example" class="collapse show" aria-labelledby="heading-example">
+                                        <div class="accordion-body">
+                                            <div class="card-text"><b>Service name:</b> @app.ServiceName</div>
+                                            <div class="card-text"><b>Description:</b> @app.Description</div>
+                                            <div class="card-text"><b>Address:</b>@app.Address</div>
+                                            <div class="card-text"><b>State:</b> @app.State</div>
+                                            <div class="card-text"><b>Errors:</b> @app.Errors</div>
 
-                        @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
-                        {
-                            case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
-                                <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
-                                break;
-                            case false:
-                                <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
-                                break;
-                        }
+                                            @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
+                                            {
+                                                case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
+                                                    <div class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</div>
+                                                    break;
+                                                case false:
+                                                    <div class="card-text"><b>Logs:</b> @app.CorrectLogAddress</div>
+                                                    break;
+                                            }
 
-                        @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
-                        {
-                            <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
-                        }
-
-                        <div class="row">
-                            @if (app.State == ServiceState.Stopped)
-                            {
-                                <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
-                                        <button class="btn btn-dark col-12">Start</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Start"/>
-                                    </form>
-                                </div>
-                            }
-                            @if (app.State == ServiceState.Running)
-                            {
-                                <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
-                                        <button class="btn btn-dark col-12">Reset</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Restart"/>
-                                    </form>
-                                </div>
-                                <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
-                                        <button class="btn btn-dark col-12">Stop</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Stop"/>
-                                    </form>
-                                </div>
-                            }
-                            @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                            {
-                                <div class="col-4">
-                                    <form asp-page-handler="DownloadFile" method="post">
-                                        <button class="btn btn-dark col-12">Get logs</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Log"/>
-                                    </form>
-                                </div>
-                            }
+                                            @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                                            {
+                                                <div class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</div>
+                                            }
+                                            <br />
+                                            <div class="row">
+                                                @if (app.State == ServiceState.Stopped)
+                                                {
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="Action" method="post">
+                                                            <button class="btn btn-dark col-12">Start</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Start" />
+                                                        </form>
+                                                    </div>
+                                                }
+                                                @if (app.State == ServiceState.Running)
+                                                {
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="Action" method="post">
+                                                            <button class="btn btn-dark col-12">Reset</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Restart" />
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="Action" method="post">
+                                                            <button class="btn btn-dark col-12">Stop</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Stop" />
+                                                        </form>
+                                                    </div>
+                                                }
+                                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
+                                                {
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="DownloadFile" method="post">
+                                                            <button class="btn btn-dark col-12">Get logs</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Log" />
+                                                        </form>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -113,80 +121,89 @@
 @if (Model.Apps != null && Model.Apps.Any(x => x.Type == ServiceType.WindowsService))
 {
     <div class="col">
-        <p class="display-4">
-            Windows services
+                <p class="display-6">
+                    Windows services
         </p>
         <div>
-            @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsService))
-            {
-                <div class="card" style="background: @app.CardColor; color: white;">
-                    <div class="card-body">
-                        <h2 class="card-title">@app.DisplayName</h2>
-                        <br/>
-                        <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                        <p class="card-text"><b>Description:</b> @app.Description</p>
-                        <p class="card-text"><b>Address:</b>@app.Address</p>
-                        <p class="card-text"><b>State:</b> @app.State</p>
-                        <p class="card-text"><b>Errors:</b> @app.Errors</p>
+                    @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsService))
+                    {
+                        <div class="accordion" id="1">
+                            <div class="accordion-item" style="background: @app.CardColor; color: white;">
+                                <h2 class="accordion-header" id="h-@app.Id">
+                                    <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
+                                        <h4 class="card-title">@app.DisplayName</h4>
+                                    </button>
+                                </h2>
+                                <div id="c-@app.Id" class="accordion-collapse collapse" aria-labelledby="h-1">
+                                    <div id="collapse-example" class="collapse show" aria-labelledby="heading-example">
+                                        <div class="accordion-body">
+                                            <div class="card-text"><b>Service name:</b> @app.ServiceName</div>
+                                            <div class="card-text"><b>Description:</b> @app.Description</div>
+                                            <div class="card-text"><b>Address:</b>@app.Address</div>
+                                            <div class="card-text"><b>State:</b> @app.State</div>
+                                            <div class="card-text"><b>Errors:</b> @app.Errors</div>
 
-                        @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
-                        {
-                            case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
-                                <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
-                                break;
-                            case false:
-                                <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
-                                break;
-                        }
+                                            @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
+                                            {
+                                                case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
+                                                    <div class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</div>
+                                                    break;
+                                                case false:
+                                                    <div class="card-text"><b>Logs:</b> @app.CorrectLogAddress</div>
+                                                    break;
+                                            }
 
-                        @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
-                        {
-                            <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
-                        }
-
-                        <div class="row">
-                            @if (app.State == ServiceState.Stopped)
-                            {
-                                <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
-                                        <button class="btn btn-dark col-12">Start</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Start"/>
-                                    </form>
+                                            @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                                            {
+                                                <div class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</div>
+                                            }
+                                            <br />
+                                            <div class="row">
+                                                @if (app.State == ServiceState.Stopped)
+                                                {
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="Action" method="post">
+                                                            <button class="btn btn-dark col-12">Start</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Start" />
+                                                        </form>
+                                                    </div>
+                                                }
+                                                @if (app.State == ServiceState.Running)
+                                                {
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="Action" method="post">
+                                                            <button class="btn btn-dark col-12">Reset</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Restart" />
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="Action" method="post">
+                                                            <button class="btn btn-dark col-12">Stop</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Stop" />
+                                                        </form>
+                                                    </div>
+                                                }
+                                                @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
+                                                {
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="DownloadFile" method="post">
+                                                            <button class="btn btn-dark col-12">Get logs</button>
+                                                            <input type="hidden" name="id" value="@app.Id" />
+                                                            <input type="hidden" name="type" value="@ActionType.Log" />
+                                                        </form>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            }
-                            @if (app.State == ServiceState.Running)
-                            {
-                                <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
-                                        <button class="btn btn-dark col-12">Reset</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Restart"/>
-                                    </form>
-                                </div>
-                                <div class="col-4">
-                                    <form asp-page-handler="Action" method="post">
-                                        <button class="btn btn-dark col-12">Stop</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Stop"/>
-                                    </form>
-                                </div>
-                            }
-                            @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                            {
-                                <div class="col-4">
-                                    <form asp-page-handler="DownloadFile" method="post">
-                                        <button class="btn btn-dark col-12">Get logs</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Log"/>
-                                    </form>
-                                </div>
-                            }
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <br/>
-            }
+                        <br />
+                    }
         </div>
     </div>
 }
@@ -194,51 +211,63 @@
 @if (Model.Apps != null && Model.Apps.Any(x => x.Type == ServiceType.WindowsTaskScheduler))
 {
     <div class="col">
-        <p class="display-4">
+        <p class="display-6">
             Task scheduler
         </p>
         <div>
             @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsTaskScheduler))
             {
-                <div class="card" style="background: @app.CardColor; color: white;">
-                    <div class="card-body">
-                        <h2 class="card-title">@app.DisplayName</h2>
-                        <br/>
-                        <p class="card-text"><b>Service name:</b> @app.ServiceName</p>
-                        <p class="card-text"><b>Description:</b> @app.Description</p>
-                        <p class="card-text"><b>Address:</b>@app.Address</p>
-                        <p class="card-text"><b>Errors:</b> @app.Errors</p>
+                        <div class="accordion" id="1">
+                            <div class="accordion-item" style="background: @app.CardColor; color: white;">
+                                <h2 class="accordion-header" id="h-@app.Id">
+                                    <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
+                                        <h4 class="card-title">@app.DisplayName</h4>
+                                    </button>
+                                </h2>
+                                <div id="c-@app.Id" class="accordion-collapse collapse" aria-labelledby="h-1">
+                                    <div id="collapse-example" class="collapse show" aria-labelledby="heading-example">
+                                        <div class="accordion-body">
+                                            <h4 class="card-title">@app.DisplayName</h4>
+                                            <div class="card-text"><b>Service name:</b> @app.ServiceName</div>
+                                            <div class="card-text"><b>Description:</b> @app.Description</div>
+                                            <div class="card-text"><b>Address:</b>@app.Address</div>
+                                            <div class="card-text"><b>Errors:</b> @app.Errors</div>
 
-                        @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
-                        {
-                            case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
-                                <p class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</p>
-                                break;
-                            case false:
-                                <p class="card-text"><b>Logs:</b> @app.CorrectLogAddress</p>
-                                break;
-                        }
+                                            @switch (string.IsNullOrEmpty(app.CorrectLogAddress))
+                                            {
+                                                case false when !string.IsNullOrEmpty(app.ErrorLogAddress):
+                                                    <div class="card-text"><b>Correct logs:</b> @app.CorrectLogAddress</div>
+                                                    break;
+                                                case false:
+                                                    <div class="card-text"><b>Logs:</b> @app.CorrectLogAddress</div>
+                                                    break;
+                                            }
 
-                        @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
-                        {
-                            <p class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</p>
-                        }
+                                            @if (!string.IsNullOrEmpty(app.ErrorLogAddress))
+                                            {
+                                                <div class="card-text"><b>Error logs:</b> @app.ErrorLogAddress</div>
+                                            }
 
-                        @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
-                        {
-                            <div class="row">
-                                <div class="col-4">
-                                    <form asp-page-handler="DownloadFile" method="post">
-                                        <button class="btn btn-dark col-12">Get logs</button>
-                                        <input type="hidden" name="id" value="@app.Id"/>
-                                        <input type="hidden" name="type" value="@ActionType.Log"/>
-                                    </form>
+                                            @if (!string.IsNullOrEmpty(app.CorrectLogAddress))
+                                            {
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <form asp-page-handler="DownloadFile" method="post">
+                                                            <button class="btn btn-dark btn-sm col-12">Get logs</button>
+                                                            <input type="hidden" name="id" value="@app.Id"/>
+                                                            <input type="hidden" name="type" value="@ActionType.Log"/>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        }
-                    </div>
-                </div>
-                <br/>
+                        </div>
+                        <br />
             }
         </div>
     </div>

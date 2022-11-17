@@ -1,4 +1,3 @@
-using System.Net;
 using Marrodent.ServicesDashboard.Controllers;
 using Marrodent.ServicesDashboard.Interfaces;
 using Marrodent.ServicesDashboard.Models.Models;
@@ -16,11 +15,6 @@ builder.Services.Configure<TerminalConfig>(builder.Configuration.GetSection("Ter
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
-}
 app.UseStaticFiles(); 
 app.UseRouting();
 app.UseAuthorization();

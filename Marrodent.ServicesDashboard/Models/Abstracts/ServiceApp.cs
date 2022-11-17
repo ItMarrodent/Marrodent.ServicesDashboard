@@ -38,16 +38,15 @@ public abstract class ServiceApp : IIdentity
                     return "#990000";
                 case ServiceState.Disabled:
                 case ServiceState.Unknown:
-                    return "#413839";
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return "#413839";
             }
         }
     }
 
     //Public - enum
     public readonly ServiceType Type;
-    public ServiceState State { get; set; }
+    [JsonIgnore] public ServiceState State { get; set; }
 
     //CTOR
     protected ServiceApp(ServiceType type)

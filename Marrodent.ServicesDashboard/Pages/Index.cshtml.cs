@@ -16,16 +16,14 @@ public sealed class IndexModel : PageModel
     public ICollection<Terminal>? Terminals { get; set; }
 
     //Private
-    private readonly ILogger<IndexModel> _logger;
     private readonly IConfigurationController _configurationController;
     private readonly IWebServiceController _webServiceController;
     private readonly IServiceController _serviceController;
     private readonly ILogController _logController;
 
     //CTOR
-    public IndexModel(ILogger<IndexModel> logger, IConfigurationController configurationController, IWebServiceController webServiceController, IServiceController serviceController, ILogController logController)
+    public IndexModel(IConfigurationController configurationController, IWebServiceController webServiceController, IServiceController serviceController, ILogController logController)
     {
-        _logger = logger;
         _configurationController = configurationController;
         _webServiceController = webServiceController;
         _serviceController = serviceController;
@@ -39,7 +37,7 @@ public sealed class IndexModel : PageModel
         Terminals = _configurationController.GetTerminals();
         await GetState();
     }
-    
+
     public IActionResult OnPostAction(int id, ActionType type)
     {
         Apps ??= _configurationController.GetAll();

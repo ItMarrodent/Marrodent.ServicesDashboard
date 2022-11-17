@@ -34,23 +34,17 @@ namespace Marrodent.ServicesDashboard.Controllers
 
         public ICollection<IISApp>? GetIisApps()
         {
-            return !File.Exists($@"{_basePath}\iis.json") 
-                ? null
-                : JsonConvert.DeserializeObject<List<IISApp>>(File.ReadAllText($@"{_basePath}\iis.json"));
+            return JsonConvert.DeserializeObject<List<IISApp>>(File.ReadAllText($@"{_basePath}\iis.json"));
         }
 
         public ICollection<WindowsServiceApp>? GetWindowsServiceApps()
         {
-            return !File.Exists($@"{_basePath}\services.json")
-                ? null
-                : JsonConvert.DeserializeObject<List<WindowsServiceApp>>(File.ReadAllText($@"{_basePath}\services.json"));
+            return JsonConvert.DeserializeObject<List<WindowsServiceApp>>(File.ReadAllText($@"{_basePath}\services.json"));
         }
 
         public ICollection<WindowsTaskSchedulerApp>? GetWindowsTaskSchedulerApps()
         {
-            return !File.Exists($@"{_basePath}\tasks.json") 
-                ? null
-                : JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\tasks.json"));
+            return JsonConvert.DeserializeObject<List<WindowsTaskSchedulerApp>>(File.ReadAllText($@"{_basePath}\tasks.json"));
         }
 
         public ICollection<Terminal> GetTerminals()
