@@ -41,7 +41,11 @@
                             <div class="accordion-item" style="background: @app.CardColor; color: white;">
                         <h2 class="accordion-header" id="h-@app.Id">
                             <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
-                                <h4 class="card-title">@app.DisplayName</h4>
+                                <h4 class="col-7 card-title">@app.DisplayName</h4>
+                                <div class="col-5">
+                                    <div class="row card-title">State: @app.State</div>
+                                    <div class="row card-title">Errors: @app.Errors</div>
+                                </div>
                             </button>
                         </h2>
                         <div id="c-@app.Id" class="accordion-collapse collapse" aria-labelledby="h-1">
@@ -131,7 +135,11 @@
                             <div class="accordion-item" style="background: @app.CardColor; color: white;">
                                 <h2 class="accordion-header" id="h-@app.Id">
                                     <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
-                                        <h4 class="card-title">@app.DisplayName</h4>
+                                        <h4 class="col-7 card-title">@app.DisplayName</h4>
+                                        <div class="col-5">
+                                            <div class="row card-title">State: @app.State</div>
+                                            <div class="row card-title">Errors: @app.Errors</div>
+                                        </div>
                                     </button>
                                 </h2>
                                 <div id="c-@app.Id" class="accordion-collapse collapse" aria-labelledby="h-1">
@@ -221,7 +229,11 @@
                             <div class="accordion-item" style="background: @app.CardColor; color: white;">
                                 <h2 class="accordion-header" id="h-@app.Id">
                                     <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
-                                        <h4 class="card-title">@app.DisplayName</h4>
+                                        <h4 class="col-7 card-title">@app.DisplayName</h4>
+                                        <div class="col-5">
+                                            <div class="row card-title">State: @app.State</div>
+                                            <div class="row card-title">Errors: @app.Errors</div>
+                                        </div>
                                     </button>
                                 </h2>
                                 <div id="c-@app.Id" class="accordion-collapse collapse" aria-labelledby="h-1">

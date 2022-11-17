@@ -127,21 +127,15 @@ public sealed class IndexModel : PageModel
         
         foreach (ServiceApp app in Apps)
         {
+            app.Errors = _logController.HasErrorsToday(app) ? "Yes" : "No";
+
             app.State = app.Type switch
             {
                 ServiceType.IIS => await _webServiceController.GetState(app.ServiceName),
                 ServiceType.WindowsService => _serviceController.GetState(app.ServiceName, app.Address),
+                ServiceType.WindowsTaskScheduler => app.Errors == "No" ? ServiceState.Running : ServiceState.Unknown,
                 _ => app.State
             };
-            
-            if (_logController.HasErrorsToday(app))
-            {
-                app.Errors = "Yes";
-            }
-            else if(!string.IsNullOrEmpty(app.ErrorLogAddress))
-            {
-                app.Errors = "No";
-            }
         }
 
         foreach (Terminal terminal in Terminals)
