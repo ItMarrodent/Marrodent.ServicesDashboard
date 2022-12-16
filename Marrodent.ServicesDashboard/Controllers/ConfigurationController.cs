@@ -53,7 +53,8 @@ namespace Marrodent.ServicesDashboard.Controllers
                 .Select(terminal => new Terminal
                 {
                     Address = terminal.value,
-                    TotalRam = _terminalConfig.Ram[terminal.index]
+                    TotalRam = _terminalConfig.Ram[terminal.index],
+                    TotalDiskSpace = _terminalConfig.Disks[terminal.index]
                 }).ToList();
         }
     }

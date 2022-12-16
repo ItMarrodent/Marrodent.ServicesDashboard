@@ -140,8 +140,11 @@ public sealed class IndexModel : PageModel
 
         foreach (Terminal terminal in Terminals)
         {
-            PerformanceCounter ramCounter = new PerformanceCounter("Memory", "Available MBytes", String.Empty, terminal.Address);
+            PerformanceCounter ramCounter = new PerformanceCounter("Memory", "Available MBytes", string.Empty, terminal.Address);
             terminal.AvailableRam = Convert.ToDouble(ramCounter.NextValue());
+
+            PerformanceCounter diskCounter = new PerformanceCounter("LogicalDisk", "Free Megabytes", "_total", terminal.Address);
+            terminal.AvailableDiskSpace = Convert.ToDouble(diskCounter.NextValue());
         }
     }
 }
