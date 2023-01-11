@@ -5,4 +5,5 @@ public sealed class TerminalConfig
     public string[] Terminals { get; set; }
     public double[] Ram { get; set; }
     public double[] Disks { get; set; }
+    public string[] Roles { get; set; }
 }

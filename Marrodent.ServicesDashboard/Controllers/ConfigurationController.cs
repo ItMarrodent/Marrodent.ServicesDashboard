@@ -54,7 +54,8 @@ namespace Marrodent.ServicesDashboard.Controllers
                 {
                     Address = terminal.value,
                     TotalRam = _terminalConfig.Ram[terminal.index],
-                    TotalDiskSpace = _terminalConfig.Disks[terminal.index]
+                    TotalDiskSpace = _terminalConfig.Disks[terminal.index],
+                    Role = _terminalConfig.Roles[terminal.index],
                 }).ToList();
         }
     }
