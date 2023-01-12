@@ -41,8 +41,8 @@
         <div>
             @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.IIS))
             {
-                <div class="accordion" id="1">
-                            <div class="accordion-item" style="background: @app.CardColor; color: white;">
+                <div class="accordion" id="1" style="padding-bottom: 10px;">
+                    <div class="accordion-item" style="background: @app.CardColor; color: white;">
                         <h2 class="accordion-header" id="h-@app.Id">
                             <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
                                 <h4 class="col-9 card-title">@app.DisplayName</h4>
@@ -120,7 +120,6 @@
                         </div>
                     </div>
                 </div>
-                <br/>
             }
         </div>
     </div>
@@ -135,7 +134,7 @@
         <div>
                     @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsService))
                     {
-                        <div class="accordion" id="1">
+                        <div class="accordion" id="1" style="padding-bottom: 10px;">
                             <div class="accordion-item" style="background: @app.CardColor; color: white;">
                                 <h2 class="accordion-header" id="h-@app.Id">
                                     <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
@@ -214,7 +213,6 @@
                                 </div>
                             </div>
                         </div>
-                        <br />
                     }
         </div>
     </div>
@@ -229,7 +227,7 @@
         <div>
             @foreach (var app in Model.Apps.Where(x => x.Type == ServiceType.WindowsTaskScheduler))
             {
-                        <div class="accordion" id="1">
+                        <div class="accordion" id="1" style="padding-bottom: 10px;">
                             <div class="accordion-item" style="background: @app.CardColor; color: white;">
                                 <h2 class="accordion-header" id="h-@app.Id">
                                     <button class="accordion-button collapsed" style="background: @app.CardColor; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#c-@app.Id" aria-expanded="false" aria-controls="c-@app.Id">
@@ -283,7 +281,6 @@
                                 </div>
                             </div>
                         </div>
-                        <br />
             }
         </div>
     </div>
