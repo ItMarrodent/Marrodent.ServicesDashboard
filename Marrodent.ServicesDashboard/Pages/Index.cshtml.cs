@@ -93,7 +93,7 @@ public sealed class IndexModel : PageModel
         switch (app.Type)
         {
             case ServiceType.IIS:
-                _webServiceController.Start(app.ServiceName);
+                _webServiceController.Start(app.Address, app.ServiceName);
                 Thread.Sleep(2000);
                 break;
             case ServiceType.WindowsService:
@@ -109,7 +109,7 @@ public sealed class IndexModel : PageModel
         switch (app.Type)
         {
             case ServiceType.IIS:
-                _webServiceController.Stop(app.ServiceName);
+                _webServiceController.Stop(app.Address, app.ServiceName);
                 Thread.Sleep(2000);
                 break;
             case ServiceType.WindowsService:

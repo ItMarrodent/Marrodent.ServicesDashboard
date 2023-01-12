@@ -91,3 +91,8 @@ C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.Serv
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\staticwebassets\msbuild.Marrodent.ServicesDashboard.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\staticwebassets\msbuild.build.Marrodent.ServicesDashboard.props
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Marrodent.ServicesDashboard.props
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Marrodent.ServicesDashboard.props
+C:\Users\dawid.grzeszuk\RiderProjects\Marrodent.ServicesDashboard\Marrodent.ServicesDashboard\obj\Debug\net6.0\staticwebassets.pack.json

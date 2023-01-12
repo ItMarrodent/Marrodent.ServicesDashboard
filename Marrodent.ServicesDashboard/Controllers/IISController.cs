@@ -12,29 +12,40 @@ namespace Marrodent.ServicesDashboard.Controllers;
 public sealed class IISController : IWebServiceController
 {
     //Private
-    private readonly IISConfig _config;
-    private readonly RestClient _client;
-    private ICollection<IISWebsite> _websites;
+    private List<IISWebsite> _websites;
+    private Dictionary<string, RestClient> _clients;
 
     //CTOR
-    public IISController(IOptions<IISConfig> options)
+    public IISController(IOptions<IISConfigs> options)
     {
-        _config = options.Value;
-        _client = new RestClient($"https://{_config.Address}:{_config.Port}")
+        _clients = new Dictionary<string, RestClient>();
+
+        foreach (IISConfigItem item in options.Value.Configs)
         {
-            Authenticator = new NtlmAuthenticator(new NetworkCredential(_config.Login, _config.Password, _config.Domain)),
-            RemoteCertificateValidationCallback = (sender, certificate, chain, errors) => true
-        };
-        _client.AddDefaultHeader("Access-Token", $"Bearer {_config.Token}");
+            RestClient client = new RestClient($"https://{item.Address}:{item.Port}")
+            {
+                Authenticator =
+                    new NtlmAuthenticator(new NetworkCredential(item.Login, item.Password, item.Domain)),
+                RemoteCertificateValidationCallback = (sender, certificate, chain, errors) => true
+            };
+
+            client.AddDefaultHeader("Access-Token", $"Bearer {item.Token}");
+            _clients.Add(item.Address, client);
+        }
     }
-    
+
     //Public
     public async Task Refresh()
     {
-        var response  = await _client.ExecuteAsync( new RestRequest("api/webserver/websites"));
-        _websites = JsonConvert.DeserializeObject<IISWebsites>(response.Content).websites;
+        _websites = new List<IISWebsite>();
+
+        foreach (RestClient client in _clients.Values)
+        {
+            var response = await client.ExecuteAsync(new RestRequest("api/webserver/websites"));
+            _websites.AddRange(JsonConvert.DeserializeObject<IISWebsites>(response.Content).websites);
+        }
     }
-    
+
     public async Task<ServiceState> GetState(string websiteName)
     {
         var website = _websites.FirstOrDefault(x => x.name == websiteName);
@@ -47,32 +58,32 @@ public sealed class IISController : IWebServiceController
         };
     }
 
-    public async Task Start(string websiteName)
+    public async Task Start(string address, string websiteName)
     {
-        var website = await GetWebsite(websiteName);
+        var website = await GetWebsite(address, websiteName);
         website.status = "started";
-        SetWebsite(website);
+        await SetWebsite(address, website);
     }
 
-    public async Task Stop(string websiteName)
+    public async Task Stop(string address, string websiteName)
     {
-        var website = await GetWebsite(websiteName);
+        var website = await GetWebsite(address, websiteName);
         website.status = "stopped";
-        SetWebsite(website);
+        await SetWebsite(address, website);
     }
-    
+
     //Private
-    private async Task SetWebsite(IISWebsiteDetail website)
+    private async Task SetWebsite(string address, IISWebsiteDetail website)
     {
         var request = new RestRequest($"api/webserver/websites/{website.id}", Method.PATCH);
         request.AddJsonBody(JsonConvert.SerializeObject(website));
-        await _client.ExecuteAsync(request);
+        await _clients[address].ExecuteAsync(request);
     }
-    
-    private async Task<IISWebsiteDetail> GetWebsite(string websiteName)
+
+    private async Task<IISWebsiteDetail> GetWebsite(string address, string websiteName)
     {
         IISWebsite website = _websites.First(x => x.name == websiteName);
-        var response  = await _client.ExecuteAsync( new RestRequest($"api/webserver/websites/{website.id}"));
+        var response = await _clients[address].ExecuteAsync(new RestRequest($"api/webserver/websites/{website.id}"));
         return JsonConvert.DeserializeObject<IISWebsiteDetail>(response.Content);
     }
 }

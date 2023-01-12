@@ -10,7 +10,7 @@ builder.Services.AddSingleton<IConfigurationController, ConfigurationController>
 builder.Services.AddSingleton<ILogController, LogController>();
 builder.Services.AddRazorPages();
 builder.Services.AddOptions();
-builder.Services.Configure<IISConfig>(builder.Configuration.GetSection("IIS_config"));
+builder.Services.Configure<IISConfigs>(builder.Configuration.GetSection("IIS_configs"));
 builder.Services.Configure<TerminalConfig>(builder.Configuration.GetSection("Terminal_config"));
 
 var app = builder.Build();

@@ -6,6 +6,6 @@ public interface IWebServiceController
 {
      Task Refresh();
      Task<ServiceState> GetState(string websiteName);
-     Task Start(string websiteName);
-     Task Stop(string websiteName);
+     Task Start(string address, string websiteName);
+     Task Stop(string address, string websiteName);
 }
